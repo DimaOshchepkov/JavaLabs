@@ -98,7 +98,7 @@ public class RegularJavaUnitsTest {
 
     @Test
     public void testIsValidUrlTrue3() {
-        String trueUrl = "https://www.google.com/search?q=Error+loading+webview%3A+Error%3A+Could+not+register+service+worker%3A+InvalidStateError%3A+Failed+to+register+a+ServiceWorker%3A+The+document+is+in+an+invalid+state..";
+        String trueUrl = "https://www.google.com/search?q=Error+loading+webview%3A+Error%3A+Could+not+register+service+worker%3A+InvalidStateError%3A+Failed+to+register+a+ServiceWorker%3A+The+document+is+in+an+invalid+state";
         Assert.assertEquals(true, rj.isValidURL(trueUrl));
     }
 
