@@ -7,11 +7,42 @@ public class RegularJavaUnitsTest {
     RegularJava rj = new RegularJava();
 
     @Test
-    public void testIsIPAddress() {
-        String trueIp = "255.255.255.255";
-        String falseIP = "255.255.255.256";
-        Assert.assertEquals(true, rj.isIPAddress(trueIp));
-        Assert.assertEquals(false, rj.isIPAddress(falseIP));
+    public void testIsIPAddressTrue() {
+        String ip = "255.255.255.255";
+
+        Assert.assertEquals(true, rj.isIPAddress(ip));
+    }
+
+    @Test
+    public void testIsIPAddressTrue2() {
+        String ip = "255.128.64.192";
+
+        Assert.assertEquals(true, rj.isIPAddress(ip));
+    }
+
+    @Test
+    public void testIsIPAddressTrue3() {
+        String ip = "0.0.0.0";
+
+        Assert.assertEquals(true, rj.isIPAddress(ip));
+    }
+
+    @Test
+    public void testIsIPAddressWithMore256() {
+        String ip= "255.255.255.256";
+        Assert.assertEquals(false, rj.isIPAddress(ip));
+    }
+
+    @Test
+    public void testIsIPAddressWithLessOctets() {
+        String ip= "255.255.255";
+        Assert.assertEquals(false, rj.isIPAddress(ip));
+    }
+
+    @Test
+    public void testIsIPAddressWithDotOnTheEnd() {
+        String ip= "255.255.255.255.";
+        Assert.assertEquals(false, rj.isIPAddress(ip));
     }
 
     @Test
