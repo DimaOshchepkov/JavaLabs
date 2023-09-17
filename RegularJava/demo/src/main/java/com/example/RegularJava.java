@@ -32,11 +32,5 @@ public class RegularJava {
                Pattern.matches(patternOneDigit, password) &&
                Pattern.matches(patternUpperCase, password) &&
                Pattern.matches(patternLowerCase, password);
-
     }
-
-    
-    
-
-
 }

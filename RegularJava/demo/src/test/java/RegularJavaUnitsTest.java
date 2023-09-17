@@ -30,9 +30,44 @@ public class RegularJavaUnitsTest {
         Assert.assertEquals(true, rj.isValidURL(trueUrl));
     }
 
+    @Test 
+    public void testIsStrongPasswordWithNotDigit() {
+        String weakPassword = "Cool_pass";
+
+        Assert.assertEquals(false, rj.isStrongPassord(weakPassword));
+    }
+
+    @Test 
+    public void testIsStrongPasswordWithNotUpperCase() {
+        String weakPassword = "ool_pass345";
+
+        Assert.assertEquals(false, rj.isStrongPassord(weakPassword));
+    }
+
+    @Test 
+    public void testIsStrongPasswordWithNotLowerCase() {
+        String weakPassword = "JKLJDGLGJ3333";
+
+        Assert.assertEquals(false, rj.isStrongPassord(weakPassword));
+    }
+
     @Test
-    public void testIsStrongPassword() {
+    public void testIsStrongPasswordTrue() {
         String strongPassword = "C00l_Pass";
+
+        Assert.assertEquals(true, rj.isStrongPassord(strongPassword));
+    }
+
+    @Test 
+    public void testIsStrongPasswordTrue2() {
+        String strongPassword = "SupperPas1";
+
+        Assert.assertEquals(true, rj.isStrongPassord(strongPassword));
+    }
+
+    @Test 
+    public void testIsStrongPasswordTrue3() {
+        String strongPassword = "lsdfg3aGGdljJJJJ";
 
         Assert.assertEquals(true, rj.isStrongPassord(strongPassword));
     }
