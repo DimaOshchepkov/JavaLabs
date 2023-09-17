@@ -17,7 +17,7 @@ public class RegularJava {
     }
 
     private static String patternUrl =
-            "^(https?:\\/\\/)?([\\da-z\\.]{2,})\\.([a-z\\.]{2,6})([\\/\\w\\?? \\.-]*)*\\/?$";
+            "^(https?:\\/\\/)?([\\da-z\\.]{2,})\\.([a-z\\.]{2,6})([\\/\\w\\S \\.-]*)*\\/?$";
     public boolean isValidURL(String url) {
         return Pattern.matches(patternUrl, url);
     }

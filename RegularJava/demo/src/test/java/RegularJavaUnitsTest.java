@@ -67,7 +67,7 @@ public class RegularJavaUnitsTest {
     }
 
     @Test
-    public void testIsGUIDWithMoreSumbols() {
+    public void testIsGUIDWithMoreSymbols() {
         String guid = "e02fd0e4-00fd-090A-ca30-0d00a0038ba40";
         Assert.assertEquals(false, rj.isGuid(guid));
     }
