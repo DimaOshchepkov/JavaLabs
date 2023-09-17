@@ -9,7 +9,16 @@ public class RegularJavaUnitsTest {
     @Test
     public void testIsIPAddress() {
         String trueIp = "255.255.255.255";
+        String falseIP = "255.255.255.256";
         Assert.assertEquals(true, rj.isIPAddress(trueIp));
-        
+        Assert.assertEquals(false, rj.isIPAddress(falseIP));
+    }
+
+    @Test
+    public void testIsGUID() {
+        String trueGuid = "e02fd0e4-00fd-090A-ca30-0d00a0038ba0";
+
+        Assert.assertEquals(true, rj.isIPAddress(trueGuid));
+        //Assert.assertEquals(false, rj.isIPAddress(falseIP));
     }
 }
