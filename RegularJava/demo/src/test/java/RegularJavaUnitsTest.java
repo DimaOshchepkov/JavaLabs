@@ -22,4 +22,11 @@ public class RegularJavaUnitsTest {
         Assert.assertEquals(true, rj.isGuid(trueGuid));
         Assert.assertEquals(false, rj.isGuid(falseGuid));
     }
+
+    @Test
+    public void testIsValidUrl() {
+        String trueUrl = "http://www.example.com";
+
+        Assert.assertEquals(true, rj.isValidURL(trueUrl));
+    }
 }
