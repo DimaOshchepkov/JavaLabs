@@ -9,21 +9,18 @@ public class RegularJavaUnitsTest {
     @Test
     public void testIsIPAddressTrue() {
         String ip = "255.255.255.255";
-
         Assert.assertEquals(true, rj.isIPAddress(ip));
     }
 
     @Test
     public void testIsIPAddressTrue2() {
         String ip = "255.128.64.192";
-
         Assert.assertEquals(true, rj.isIPAddress(ip));
     }
 
     @Test
     public void testIsIPAddressTrue3() {
         String ip = "0.0.0.0";
-
         Assert.assertEquals(true, rj.isIPAddress(ip));
     }
 
@@ -52,12 +49,40 @@ public class RegularJavaUnitsTest {
     }
 
     @Test
-    public void testIsGUID() {
+    public void testIsGUIDTrue() {
         String trueGuid = "e02fd0e4-00fd-090A-ca30-0d00a0038ba0";
-        String falseGuid = "sdgsdfgdsfdfvbdfgfsdssfgsgsdfwegsdf";
-
         Assert.assertEquals(true, rj.isGuid(trueGuid));
-        Assert.assertEquals(false, rj.isGuid(falseGuid));
+    }
+
+    @Test
+    public void testIsGUIDTrue2() {
+        String trueGuid = "53DE358F-45F1-E311-93EA-00269E58F20D";
+        Assert.assertEquals(true, rj.isGuid(trueGuid));
+    }
+
+    @Test
+    public void testIsGUIDTrue3() {
+        String trueGuid = "d3630000-5d0f-0015-ed68-08da3058ad5c";
+        Assert.assertEquals(true, rj.isGuid(trueGuid));
+    }
+
+
+    @Test
+    public void testIsGUIDWithMoreSumbols() {
+        String guid = "e02fd0e4-00fd-090A-ca30-0d00a0038ba40";
+        Assert.assertEquals(false, rj.isGuid(guid));
+    }
+
+    @Test
+    public void testIsGUIDWithIncorrectSumbols() {
+        String guid = "e02fd0e4-00fd-090A-ca30-0d00a0u38ba40";
+        Assert.assertEquals(false, rj.isGuid(guid));
+    }
+
+    @Test
+    public void testIsGUIDWithNotHyphen() {
+        String guid = "e02fd0e4-00fd-090A+ca30-0d00a0u38ba40";
+        Assert.assertEquals(false, rj.isGuid(guid));
     }
 
     @Test
