@@ -18,8 +18,21 @@ public class RegularJava {
 
     private static String patternUrl =
             "^(https?:\\/\\/)?([\\da-z\\.]{2,})\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$";
-    public Object isValidURL(String trueUrl) {
-        return Pattern.matches(patternUrl, trueUrl);
+    public boolean isValidURL(String url) {
+        return Pattern.matches(patternUrl, url);
+    }
+
+    private static String patternCountAndSizeOfPass = 
+            "[a-zA-Z0-9_]{8,}";
+    private static String patternOneDigit = ".*\\d.*";
+    private static String patternUpperCase = ".*[A-Z].*";
+    private static String patternLowerCase = ".*[a-z].*";
+    public boolean isStrongPassord(String password) {
+        return Pattern.matches(patternCountAndSizeOfPass, password) &&
+               Pattern.matches(patternOneDigit, password) &&
+               Pattern.matches(patternUpperCase, password) &&
+               Pattern.matches(patternLowerCase, password);
+
     }
 
     
