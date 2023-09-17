@@ -40,6 +40,12 @@ public class RegularJavaUnitsTest {
     }
 
     @Test
+    public void testIsIPAddressWithEmptyOctet() {
+        String ip= "255.255..253";
+        Assert.assertEquals(false, rj.isIPAddress(ip));
+    }
+
+    @Test
     public void testIsIPAddressWithDotOnTheEnd() {
         String ip= "255.255.255.255.";
         Assert.assertEquals(false, rj.isIPAddress(ip));
