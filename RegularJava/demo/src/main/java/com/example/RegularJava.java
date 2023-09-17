@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class RegularJava {
     
     private static String patternIP = 
-            "((0|1\\d{0,2}|2([0-4][0-9]|5[0-5]))\\.){3}(0|1\\d{0,2}|2([0-4][0-9]|5[0-5]))";
+            "((0|1\\d{1,2}|\\d{0,2}|2([0-4][0-9]|5[0-5]))\\.){3}(0|1\\d{0,2}|\\d{1,2}|2([0-4][0-9]|5[0-5]))";
     public boolean isIPAddress(String ip) {
         return Pattern.matches(patternIP, ip);
     }
