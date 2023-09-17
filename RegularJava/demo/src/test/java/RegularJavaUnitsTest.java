@@ -17,8 +17,9 @@ public class RegularJavaUnitsTest {
     @Test
     public void testIsGUID() {
         String trueGuid = "e02fd0e4-00fd-090A-ca30-0d00a0038ba0";
+        String falseGuid = "sdgsdfgdsfdfvbdfgfsdssfgsgsdfwegsdf";
 
-        Assert.assertEquals(true, rj.isIPAddress(trueGuid));
-        //Assert.assertEquals(false, rj.isIPAddress(falseIP));
+        Assert.assertEquals(true, rj.isGuid(trueGuid));
+        Assert.assertEquals(false, rj.isGuid(falseGuid));
     }
 }
