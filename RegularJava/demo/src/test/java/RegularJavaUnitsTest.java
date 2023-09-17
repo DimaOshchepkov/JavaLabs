@@ -9,6 +9,7 @@ public class RegularJavaUnitsTest {
     @Test
     public void testIsIPAddress() {
         String trueIp = "255.255.255.255";
-        Assert.assertEquals(trueIp + " is correct", true, rj.isIPAddress(trueIp));
+        Assert.assertEquals(true, rj.isIPAddress(trueIp));
+        
     }
 }
