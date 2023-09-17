@@ -66,7 +66,6 @@ public class RegularJavaUnitsTest {
         Assert.assertEquals(true, rj.isGuid(trueGuid));
     }
 
-
     @Test
     public void testIsGUIDWithMoreSumbols() {
         String guid = "e02fd0e4-00fd-090A-ca30-0d00a0038ba40";
@@ -86,10 +85,39 @@ public class RegularJavaUnitsTest {
     }
 
     @Test
-    public void testIsValidUrl() {
+    public void testIsValidUrlTrue() {
         String trueUrl = "http://www.example.com";
-
         Assert.assertEquals(true, rj.isValidURL(trueUrl));
+    }
+
+    @Test
+    public void testIsValidUrlTrue2() {
+        String trueUrl = "http://example.com";
+        Assert.assertEquals(true, rj.isValidURL(trueUrl));
+    }
+
+    @Test
+    public void testIsValidUrlTrue3() {
+        String trueUrl = "https://www.google.com/search?q=Error+loading+webview%3A+Error%3A+Could+not+register+service+worker%3A+InvalidStateError%3A+Failed+to+register+a+ServiceWorker%3A+The+document+is+in+an+invalid+state..";
+        Assert.assertEquals(true, rj.isValidURL(trueUrl));
+    }
+
+    @Test
+    public void testIsValidUrlJustText() {
+        String url = "Привет мир";
+        Assert.assertEquals(false, rj.isValidURL(url));
+    }
+
+    @Test
+    public void testIsValidUrlWithOneAlphaInDomen() {
+        String url = "http://a.com";
+        Assert.assertEquals(false, rj.isValidURL(url));
+    }
+
+    @Test
+    public void testIsValidUrlWithHyphenInDomen() {
+        String url = "https://vyatsu-my.sharepoint.com/:w:/g/personal/usr11801_vyatsu_ru/EXSYtF-6KNRDlEt2XQHy7l4Bn_9G93sIl9hHFDpsubQLIg?wdOrigin=TEAMS-ELECTRON.p2p.bim&wdExp=TEAMS-CONTROL&wdhostclicktime=1694969850949&web=1";
+        Assert.assertEquals(false, rj.isValidURL(url));
     }
 
     @Test 
