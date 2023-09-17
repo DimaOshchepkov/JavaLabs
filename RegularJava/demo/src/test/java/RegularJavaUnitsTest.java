@@ -29,4 +29,11 @@ public class RegularJavaUnitsTest {
 
         Assert.assertEquals(true, rj.isValidURL(trueUrl));
     }
+
+    @Test
+    public void testIsStrongPassword() {
+        String strongPassword = "C00l_Pass";
+
+        Assert.assertEquals(true, rj.isStrongPassord(strongPassword));
+    }
 }
