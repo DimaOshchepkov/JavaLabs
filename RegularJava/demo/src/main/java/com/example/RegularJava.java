@@ -10,10 +10,12 @@ public class RegularJava {
         return Pattern.matches(patternIP, ip);
     }
 
-    private static String patternGuid = 
+    private static String patternGuid1 = 
+          "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}";
+    private static String patternGuid2 = 
           "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}";
     public boolean isGuid(String guid) {
-        return Pattern.matches(patternGuid, guid);
+        return Pattern.matches(patternGuid1, guid) || Pattern.matches(patternGuid2, guid);
     }
 
     private static String patternUrl =
@@ -22,15 +24,9 @@ public class RegularJava {
         return Pattern.matches(patternUrl, url);
     }
 
-    private static String patternCountAndSizeOfPass = 
-            "[a-zA-Z0-9_]{8,}";
-    private static String patternOneDigit = ".*\\d.*";
-    private static String patternUpperCase = ".*[A-Z].*";
-    private static String patternLowerCase = ".*[a-z].*";
+
+    private static String patternValidPassword = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$";
     public boolean isStrongPassord(String password) {
-        return Pattern.matches(patternCountAndSizeOfPass, password) &&
-               Pattern.matches(patternOneDigit, password) &&
-               Pattern.matches(patternUpperCase, password) &&
-               Pattern.matches(patternLowerCase, password);
+        return Pattern.matches(patternValidPassword, password);
     }
 }
