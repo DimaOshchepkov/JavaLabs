@@ -1,14 +1,13 @@
 package ru.oschepkov;
 
-import com.google.gson.JsonObject;
-
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.w3c.dom.*;
 
-
-public class BookstoreConverterToJson implements IConverterXML{
+public class BookstoreConverterToJson implements IConverterXML {
 
     final IValidator bookStoreVal;
     IReaderDOM reader;
@@ -22,19 +21,19 @@ public class BookstoreConverterToJson implements IConverterXML{
     public void convert(String pathXml, String pathJson, IBookstoreTransformationCommand command) throws Exception {
         if (!bookStoreVal.isValid(pathXml))
             throw new Exception("incorrect xsd schema of file");
-        
+
         Document doc = reader.read(pathXml);
-        doc = command.invoke(doc);
-        writeJsonToFile(convertDocumentToJson(doc).toString(), pathJson);
+        // doc = command.invoke(doc);
+        writeJsonToFile(convertDocumentToJson(doc), pathJson);
     }
 
     @Override
     public void convert(String pathXml, IBookstoreTransformationCommand command) throws Exception {
-        convert(pathXml, "demo\\src\\main\\resourses", command);
+        convert(pathXml, "demo\\src\\main\\resourses\\out.json", command);
     }
 
-    private JsonObject convertDocumentToJson(Document document) {
-        JsonObject json = new JsonObject();
+    private JSONObject convertDocumentToJson(Document document) {
+        JSONObject json = new JSONObject();
 
         // Получаем корневой элемент
         Element rootElement = document.getDocumentElement();
@@ -45,37 +44,48 @@ public class BookstoreConverterToJson implements IConverterXML{
         return json;
     }
 
-    private static void writeJsonToFile(String json, String filePath) {
-        try (FileWriter fileWriter = new FileWriter(filePath)) {
-            fileWriter.write(json);
+    private static void writeJsonToFile(JSONObject json, String filePath) {
+        try (FileWriter file = new FileWriter(filePath)) {
+            file.write(json.toJSONString());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void convertElementToJson(Element element, JsonObject json) {
-        NodeList childNodes = element.getChildNodes();
+    public static void convertElementToJson(Element element, JSONObject json) {
+    NodeList childNodes = element.getChildNodes();
+    for (int i = 0; i < childNodes.getLength(); i++) {
+        Node node = childNodes.item(i);
 
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node node = childNodes.item(i);
-
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element childElement = (Element) node;
-                JsonObject childJson = new JsonObject();
-                convertElementToJson(childElement, childJson);
-                json.add(childElement.getNodeName(), childJson);
-            } else if (node.getNodeType() == Node.TEXT_NODE) {
-                json.addProperty("value", node.getNodeValue());
+        if (node.getNodeType() == Node.TEXT_NODE) {
+            String value = node.getNodeValue().trim();
+            if (!value.isEmpty()) {
+                json.put("value", value);
             }
-        }
+        } else if (node.getNodeType() == Node.ELEMENT_NODE) {
+            Element childElement = (Element) node;
+            String childElementName = childElement.getNodeName();
+            JSONObject childJson = new JSONObject();
 
-        NamedNodeMap attributes = element.getAttributes();
-
-        if (attributes != null) {
-            for (int i = 0; i < attributes.getLength(); i++) {
-                Attr attribute = (Attr) attributes.item(i);
-                json.addProperty(attribute.getName(), attribute.getValue());
+            // Проверяем, существует ли уже ключ с таким именем
+            if (json.containsKey(childElementName)) {
+                // Если существует, и это не массив, превращаем в массив
+                if (!(json.get(childElementName) instanceof JSONArray)) {
+                    JSONArray jsonArray = new JSONArray();
+                    jsonArray.add(json.get(childElementName));
+                    jsonArray.add(childJson);
+                    json.put(childElementName, jsonArray);
+                } else {
+                    // Если это массив, добавляем новый объект к массиву
+                    ((JSONArray) json.get(childElementName)).add(childJson);
+                }
+            } else {
+                // Если ключа нет, просто добавляем его
+                json.put(childElementName, childJson);
             }
+
+            convertElementToJson(childElement, childJson);
         }
-    }  
+    }
+}
 }
