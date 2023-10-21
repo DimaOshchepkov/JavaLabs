@@ -1,59 +1,51 @@
 {
-    "bookstore": [
+  "bookstore": {
+    "book": [
       {
-        "category": "Fantasy",
-        "title": {
-          "lang": "en",
-          "text": "Harry Potter and the Philosopher's Stone"
-        },
+        "title": "Harry Potter and the Philosopher's Stone",
         "author": "J.K. Rowling",
         "year": 1997,
-        "price": {
-          "currency": "USD",
-          "value": 20.00
-        },
-        "characters": [
-          {
-            "name": "Harry Potter",
-            "role": "Protagonist"
-          },
-          {
-            "name": "Hermione Granger",
-            "role": "Supporting"
-          },
-          {
-            "name": "Ron Weasley",
-            "role": "Supporting"
-          }
-        ]
+        "price": 20,
+        "characters": {
+          "character": [
+            {
+              "name": "Harry Potter",
+              "role": "Protagonist"
+            },
+            {
+              "name": "Hermione Granger",
+              "role": "Supporting"
+            },
+            {
+              "name": "Ron Weasley",
+              "role": "Supporting"
+            }
+          ]
+        }
       },
       {
-        "category": "Science Fiction",
-        "title": {
-          "lang": "en",
-          "text": "Dune"
-        },
+        "title": "Dune",
         "author": "Frank Herbert",
         "year": 1965,
-        "price": {
-          "currency": "USD",
-          "value": 25.00
-        },
-        "characters": [
-          {
-            "name": "Paul Atreides",
-            "role": "Protagonist"
-          },
-          {
-            "name": "Liet-Kynes",
-            "role": "Supporting"
-          },
-          {
-            "name": "Baron Vladimir Harkonnen",
-            "role": "Antagonist"
-          }
-        ]
+        "price": 25,
+        "characters": {
+          "character": [
+            {
+              "name": "Paul Atreides",
+              "role": "Protagonist"
+            },
+            {
+              "name": "Liet-Kynes",
+              "role": "Supporting"
+            },
+            {
+              "name": "Baron Vladimir Harkonnen",
+              "role": "Antagonist"
+            }
+          ]
+        }
       }
     ]
   }
+}
   
