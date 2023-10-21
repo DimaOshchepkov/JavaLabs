@@ -1,17 +1,12 @@
 package ru.oschepkov;
 
-import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.Gson;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.w3c.dom.*;
-import javax.xml.parsers.*;
-import java.io.*;
+
 
 public class BookstoreConverterToJson implements IConverterXML{
 
@@ -24,16 +19,16 @@ public class BookstoreConverterToJson implements IConverterXML{
     }
 
     @Override
-    public void convert(String path, IBookstoreTransformationCommand command) throws Exception {
-        if (!bookStoreVal.isValid(path))
-            throw new Exception("incorrect xmd schema of file");
+    public void convert(String pathXml, String pathJson, IBookstoreTransformationCommand command) throws Exception {
+        if (!bookStoreVal.isValid(pathXml))
+            throw new Exception("incorrect xsd schema of file");
         
-        Document doc = reader.read(path);
-        command.invoke(doc);
-        convertDocumentToJson(doc);
+        Document doc = reader.read(pathXml);
+        doc = command.invoke(doc);
+        writeJsonToFile(convertDocumentToJson(doc).toString(), pathJson);
     }
 
-     public static JsonObject convertDocumentToJson(Document document) {
+    private JsonObject convertDocumentToJson(Document document) {
         JsonObject json = new JsonObject();
 
         // Получаем корневой элемент
@@ -43,6 +38,14 @@ public class BookstoreConverterToJson implements IConverterXML{
         convertElementToJson(rootElement, json);
 
         return json;
+    }
+
+    private static void writeJsonToFile(String json, String filePath) {
+        try (FileWriter fileWriter = new FileWriter(filePath)) {
+            fileWriter.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void convertElementToJson(Element element, JsonObject json) {
@@ -69,6 +72,5 @@ public class BookstoreConverterToJson implements IConverterXML{
                 json.addProperty(attribute.getName(), attribute.getValue());
             }
         }
-    }
-    
+    }  
 }
