@@ -28,6 +28,11 @@ public class BookstoreConverterToJson implements IConverterXML{
         writeJsonToFile(convertDocumentToJson(doc).toString(), pathJson);
     }
 
+    @Override
+    public void convert(String pathXml, IBookstoreTransformationCommand command) throws Exception {
+        convert(pathXml, "demo\\src\\main\\resourses", command);
+    }
+
     private JsonObject convertDocumentToJson(Document document) {
         JsonObject json = new JsonObject();
 
