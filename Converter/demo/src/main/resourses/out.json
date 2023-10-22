@@ -1,0 +1,88 @@
+{
+    "book": [
+        {
+            "characters": {
+                "character": [
+                    {
+                        "role": {
+                            "value": "Protagonist"
+                        },
+                        "name": {
+                            "value": "Harry Potter"
+                        }
+                    },
+                    {
+                        "role": {
+                            "value": "Supporting"
+                        },
+                        "name": {
+                            "value": "Hermione Granger"
+                        }
+                    },
+                    {
+                        "role": {
+                            "value": "Supporting"
+                        },
+                        "name": {
+                            "value": "Ron Weasley"
+                        }
+                    }
+                ]
+            },
+            "year": {
+                "value": "1997"
+            },
+            "author": {
+                "value": "J.K. Rowling"
+            },
+            "price": {
+                "value": "20.00"
+            },
+            "title": {
+                "value": "Harry Potter and the Philosopher's Stone"
+            }
+        },
+        {
+            "characters": {
+                "character": [
+                    {
+                        "role": {
+                            "value": "Protagonist"
+                        },
+                        "name": {
+                            "value": "Paul Atreides"
+                        }
+                    },
+                    {
+                        "role": {
+                            "value": "Supporting"
+                        },
+                        "name": {
+                            "value": "Liet-Kynes"
+                        }
+                    },
+                    {
+                        "role": {
+                            "value": "Antagonist"
+                        },
+                        "name": {
+                            "value": "Baron Vladimir Harkonnen"
+                        }
+                    }
+                ]
+            },
+            "year": {
+                "value": "1965"
+            },
+            "author": {
+                "value": "Frank Herbert"
+            },
+            "price": {
+                "value": "25.00"
+            },
+            "title": {
+                "value": "Dune"
+            }
+        }
+    ]
+}

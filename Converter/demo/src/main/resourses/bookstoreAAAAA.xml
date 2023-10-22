@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bookstore>
+    <book category="Fantasy">
+        <title lang="en">Harry Potter and the Philosopher's Stone</title>
+        <author>J.K. Rowling</author>
+        <year>1997</year>
+        <price currency="USD">20.00</price>
+        <characters>
+            <book>
+                <name>Harry Potter</name>
+                <role>Protagonist</role>
+            </book>
+            <book>
+                <name>Hermione Granger</name>
+                <role>Supporting</role>
+            </book>
+            <book>
+                <name>Ron Weasley</name>
+                <role>Supporting</role>
+            </book>
+        </characters>
+    </book>
+    <book category="Science Fiction">
+        <title lang="en">Dune</title>
+        <author>Frank Herbert</author>
+        <year>1965</year>
+        <price currency="USD">25.00</price>
+        <characters>
+            <book>
+                <name>Paul Atreides</name>
+                <role>Protagonist</role>
+            </book>
+            <book>
+                <name>Liet-Kynes</name>
+                <role>Supporting</role>
+            </book>
+            <book>
+                <name>Baron Vladimir Harkonnen</name>
+                <role>Antagonist</role>
+            </book>
+        </characters>
+    </book>
+</bookstore>
