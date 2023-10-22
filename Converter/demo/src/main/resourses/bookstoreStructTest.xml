@@ -6,18 +6,18 @@
         <year>1997</year>
         <price currency="USD">20.00</price>
         <characters>
-            <book>
+            <character>
                 <name>Harry Potter</name>
                 <role>Protagonist</role>
-            </book>
-            <book>
+            </character>
+            <character>
                 <name>Hermione Granger</name>
                 <role>Supporting</role>
-            </book>
-            <book>
+            </character>
+            <character>
                 <name>Ron Weasley</name>
                 <role>Supporting</role>
-            </book>
+            </character>
         </characters>
     </book>
     <book category="Science Fiction">
@@ -26,18 +26,18 @@
         <year>1965</year>
         <price currency="USD">25.00</price>
         <characters>
-            <book>
+            <character>
                 <name>Paul Atreides</name>
                 <role>Protagonist</role>
-            </book>
-            <book>
+            </character>
+            <character>
                 <name>Liet-Kynes</name>
                 <role>Supporting</role>
-            </book>
-            <book>
+            </character>
+            <character>
                 <name>Baron Vladimir Harkonnen</name>
                 <role>Antagonist</role>
-            </book>
+            </character>
         </characters>
     </book>
 </bookstore>

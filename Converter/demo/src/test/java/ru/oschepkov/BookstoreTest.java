@@ -74,7 +74,7 @@ public class BookstoreTest {
             bookstore.getBooks().add(book2);
 
             // Маршализуем объекты в XML и сохраняем в файл
-            marshaller.marshal(bookstore, new File("D:\\Programming\\Проекты на java\\Converter\\demo\\src\\main\\resourses\\bookstoreStructTest.xml"));
-            assertTrue(validator.isValid("D:\\Programming\\Проекты на java\\Converter\\demo\\src\\main\\resourses\\bookstoreStructTest.xml"));
+            marshaller.marshal(bookstore, new File("src\\main\\resourses\\bookstoreStructTest.xml"));
+            assertTrue(validator.isValid("src\\main\\resourses\\bookstoreStructTest.xml"));
     }
 }

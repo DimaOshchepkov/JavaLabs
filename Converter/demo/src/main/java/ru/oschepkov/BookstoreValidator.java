@@ -18,7 +18,7 @@ public class BookstoreValidator implements IValidator  {
     Schema schema;
     Validator validator;
     BookstoreValidator() throws ParserConfigurationException, SAXException {
-        pathToXsd = "D:\\Programming\\Проекты на java\\Converter\\demo\\src\\main\\resourses\\xsdSchema.xsd";
+        pathToXsd = "src\\main\\resourses\\xsdSchema.xsd";
         sFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         schema = sFactory.newSchema(new File(pathToXsd));
         validator = schema.newValidator(); 
