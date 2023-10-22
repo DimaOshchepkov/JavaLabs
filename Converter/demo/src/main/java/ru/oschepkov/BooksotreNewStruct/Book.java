@@ -1,4 +1,4 @@
-package ru.oschepkov.BookstoreStruct;
+package ru.oschepkov.BooksotreNewStruct;
 
 
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -21,7 +21,6 @@ public class Book {
 
     private Title title;
     private Author author;
-    private Year year;
     private Price price;
     private Characters characters;
 }

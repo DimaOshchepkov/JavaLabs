@@ -18,18 +18,23 @@ public class BookstoreValidator implements IValidator  {
     Schema schema;
     Validator validator;
     BookstoreValidator() throws ParserConfigurationException, SAXException {
+        pathToXsd = "D:\\Programming\\Проекты на java\\Converter\\demo\\src\\main\\resourses\\xsdSchema.xsd";
+        sFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        schema = sFactory.newSchema(new File(pathToXsd));
+        validator = schema.newValidator(); 
+    }
+
+    BookstoreValidator(String xsd) throws ParserConfigurationException, SAXException {
+        pathToXsd = xsd;
         sFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         schema = sFactory.newSchema(new File(pathToXsd));
         validator = schema.newValidator();
     }
 
-    final String pathToXsd = "demo\\src\\main\\resourses\\xsdSchema.xsd";
+    String pathToXsd;
     @Override
     public boolean isValid(String path) {
          try {
-            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = factory.newSchema(new File(pathToXsd));
-            Validator validator = schema.newValidator();
             validator.validate(new StreamSource(new File(path)));
             return true;
         } catch (SAXException | IOException e) {

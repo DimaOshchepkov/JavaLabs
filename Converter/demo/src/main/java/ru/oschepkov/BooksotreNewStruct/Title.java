@@ -1,27 +1,27 @@
-package ru.oschepkov.BookstoreStruct;
-
+package ru.oschepkov.BooksotreNewStruct;
 
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlValue;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.xml.bind.annotation.XmlAccessType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class Book {
+public class Title {
 
     @XmlAttribute
-    private String category;
+    private String lang;
 
-    private Title title;
-    private Author author;
-    private Year year;
-    private Price price;
-    private Characters characters;
+    @XmlValue
+    private String value;
+
+    // геттеры и сеттеры
 }
+
+
+
