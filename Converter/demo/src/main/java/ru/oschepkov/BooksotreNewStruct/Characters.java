@@ -17,6 +17,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 @NoArgsConstructor
 public class Characters {
 
-    @XmlElement(name = "book")
+    @XmlElement(name = "character")
     private List<Character> books;
 }
