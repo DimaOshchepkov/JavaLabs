@@ -18,13 +18,14 @@ public class BookstoreValidator implements IValidator  {
     Schema schema;
     Validator validator;
     BookstoreValidator() throws ParserConfigurationException, SAXException {
-        pathToXsd = "src\\main\\resourses\\xsdSchema.xsd";
-        sFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        schema = sFactory.newSchema(new File(pathToXsd));
-        validator = schema.newValidator(); 
+        init("src\\main\\resourses\\xsdSchema.xsd");
     }
 
     BookstoreValidator(String xsd) throws ParserConfigurationException, SAXException {
+        init(xsd);
+    }
+
+    private void init(String xsd) throws ParserConfigurationException, SAXException {
         pathToXsd = xsd;
         sFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         schema = sFactory.newSchema(new File(pathToXsd));

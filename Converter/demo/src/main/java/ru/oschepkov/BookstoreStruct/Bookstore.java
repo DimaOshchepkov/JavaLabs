@@ -1,6 +1,6 @@
 package ru.oschepkov.BookstoreStruct;
 
-import javax.xml.bind.annotation.*;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,14 +8,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@XmlRootElement(name = "bookstore")
-@XmlAccessorType(XmlAccessType.FIELD)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Bookstore {
 
-    @XmlElement(name = "book")
+    @JacksonXmlElementWrapper(useWrapping = false)
     private List<Book> books;
 }
 

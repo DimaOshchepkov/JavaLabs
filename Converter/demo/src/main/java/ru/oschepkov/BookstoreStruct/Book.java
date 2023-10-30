@@ -1,27 +1,31 @@
 package ru.oschepkov.BookstoreStruct;
 
-
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.xml.bind.annotation.XmlAccessType;
-
-@XmlAccessorType(XmlAccessType.FIELD)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
 
-    @XmlAttribute
+    @JacksonXmlProperty(isAttribute = true)
     private String category;
 
+    @JacksonXmlProperty
     private Title title;
+
+    @JacksonXmlProperty
     private Author author;
+
+    @JacksonXmlProperty
     private Year year;
+
+    @JacksonXmlProperty
     private Price price;
+
+    @JacksonXmlProperty
     private Characters characters;
 }

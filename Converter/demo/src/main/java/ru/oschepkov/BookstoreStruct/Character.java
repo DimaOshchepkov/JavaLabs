@@ -1,19 +1,17 @@
 package ru.oschepkov.BookstoreStruct;
 
-import javax.xml.bind.annotation.XmlAccessorType;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.xml.bind.annotation.XmlAccessType;
-
-@XmlAccessorType(XmlAccessType.FIELD)
 @Data
 @AllArgsConstructor
 public class Character {
 
+    @JacksonXmlProperty
     private String name;
+    
+    @JacksonXmlProperty
     private String role;
-
-    // геттеры и сеттеры
 }

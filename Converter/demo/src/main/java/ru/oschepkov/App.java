@@ -17,10 +17,6 @@ import ru.oschepkov.BookstoreStruct.Price;
 import ru.oschepkov.BookstoreStruct.Title;
 import ru.oschepkov.BookstoreStruct.Year;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args ) throws Exception
