@@ -1,14 +1,17 @@
 package com.ochchepkov;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import com.ochchepkov.LSCommans.NoFlagCommand;
+import com.ochchepkov.LSCommans.RecursiveFlag;
 
 public class WorkingDirectory {
 
     private static volatile WorkingDirectory workingDirectory;
+    private volatile StringBuilder path = new StringBuilder("src");
 
     private WorkingDirectory() {};
-    private List<IComand> commands = new ArrayList<IComand>();
+    private IComand command;
 
     public static WorkingDirectory getInstance() {
         if (workingDirectory == null){
@@ -21,8 +24,17 @@ public class WorkingDirectory {
         return workingDirectory;
     }
 
-    public <T, U> void invoke(IComand<T, U> command) {
-        commands.add(command);
+    public void invoke(IComand command) {
+        this.command = command;
     }
-    public
+
+
+    public void apply(String... arg) 
+    {
+        String responce;
+
+        responce = command.apply(path, new List<String>());
+
+        System.out.println(responce);
+    }
 }
