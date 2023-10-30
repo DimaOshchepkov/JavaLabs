@@ -1,87 +1,69 @@
 {
-    "book": [
+    "books": [
         {
-            "characters": {
-                "character": [
-                    {
-                        "role": {
-                            "value": "Protagonist"
-                        },
-                        "name": {
-                            "value": "Harry Potter"
-                        }
-                    },
-                    {
-                        "role": {
-                            "value": "Supporting"
-                        },
-                        "name": {
-                            "value": "Hermione Granger"
-                        }
-                    },
-                    {
-                        "role": {
-                            "value": "Supporting"
-                        },
-                        "name": {
-                            "value": "Ron Weasley"
-                        }
-                    }
-                ]
-            },
-            "year": {
-                "value": "1997"
+            "category": "Fantasy",
+            "title": {
+                "lang": "en",
+                "value": "Harry Potter and the Philosopher's Stone"
             },
             "author": {
                 "value": "J.K. Rowling"
             },
+            "year": {
+                "value": "1997"
+            },
             "price": {
+                "currency": "USD",
                 "value": "20.00"
             },
-            "title": {
-                "value": "Harry Potter and the Philosopher's Stone"
+            "characters": {
+                "characters": [
+                    {
+                        "name": "Harry Potter",
+                        "role": "Protagonist"
+                    },
+                    {
+                        "name": "Hermione Granger",
+                        "role": "Supporting"
+                    },
+                    {
+                        "name": "Ron Weasley",
+                        "role": "Supporting"
+                    }
+                ]
             }
         },
         {
-            "characters": {
-                "character": [
-                    {
-                        "role": {
-                            "value": "Protagonist"
-                        },
-                        "name": {
-                            "value": "Paul Atreides"
-                        }
-                    },
-                    {
-                        "role": {
-                            "value": "Supporting"
-                        },
-                        "name": {
-                            "value": "Liet-Kynes"
-                        }
-                    },
-                    {
-                        "role": {
-                            "value": "Antagonist"
-                        },
-                        "name": {
-                            "value": "Baron Vladimir Harkonnen"
-                        }
-                    }
-                ]
-            },
-            "year": {
-                "value": "1965"
+            "category": "Science Fiction",
+            "title": {
+                "lang": "en",
+                "value": "Dune"
             },
             "author": {
                 "value": "Frank Herbert"
             },
+            "year": {
+                "value": "1965"
+            },
             "price": {
+                "currency": "USD",
                 "value": "25.00"
             },
-            "title": {
-                "value": "Dune"
+            "characters": {
+                "characters": [
+                    {
+                        "name": "Paul Atreides",
+                        "role": "Protagonist"
+                    },
+                    {
+                        "name": "Liet-Kynes",
+                        "role": "Supporting"
+                    },
+                    {
+                        "name": "Baron Vladimir Harkonnen",
+                        "role": "Antagonist"
+                    }
+                ]
             }
         }
     ]

@@ -1,5 +1,8 @@
 package ru.oschepkov;
 
+import ru.oschepkov.Validators.BookstoreValidator;
+import ru.oschepkov.Validators.IValidator;
+
 public class BookstoreConverterToJson implements IConverterXML {
 
     final IValidator bookStoreValXml;
@@ -25,6 +28,6 @@ public class BookstoreConverterToJson implements IConverterXML {
 
     @Override
     public void convert(String pathXml) throws Exception {
-        convert(pathXml, "demo\\src\\main\\resourses\\out.json");
+        convert(pathXml, "src\\main\\resourses\\out.json");
     }
 }
