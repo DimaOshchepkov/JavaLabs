@@ -3,7 +3,7 @@ package ru.oschepkov;
 import ru.oschepkov.Validators.BookstoreValidator;
 import ru.oschepkov.Validators.IValidator;
 
-public class BookstoreConverterToJson implements IConverterXML {
+public class BookstoreConverterToJson implements IConverter {
 
     final IValidator bookStoreValXml;
     final SerializeToJson serializerToJson;
