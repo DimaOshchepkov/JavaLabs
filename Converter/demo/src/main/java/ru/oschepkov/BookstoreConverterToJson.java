@@ -5,12 +5,12 @@ import java.io.IOException;
 
 public class BookstoreConverterToJson implements IConverter {
 
-    final SerializeToJson serializerToJson;
+    final SerializerToJson serializerToJson;
     final DeserializerFromXml deserializerFromXml;
     final MapperBookstore mapperBookStore;
 
     BookstoreConverterToJson() throws Exception {
-        serializerToJson = new SerializeToJson();
+        serializerToJson = new SerializerToJson();
         deserializerFromXml = new DeserializerFromXml();
         mapperBookStore = new MapperBookstore();
     }
@@ -28,6 +28,6 @@ public class BookstoreConverterToJson implements IConverter {
 
     @Override
     public void convert(String pathXml){
-        convert(pathXml, "src\\main\\resourses\\out.json");
+        convert(pathXml, "src\\test\\resources\\BookstoreConverterToJson.json");
     }
 }

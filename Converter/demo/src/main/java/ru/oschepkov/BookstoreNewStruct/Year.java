@@ -7,16 +7,17 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Year {
 
-    @JacksonXmlProperty
     private String value;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "book")
     private List<Book> books;
 }
 

@@ -20,8 +20,8 @@ public class BookstoreConverterToXml implements IConverter{
     public void convert(String pathXml, String pathJson){
 
         try {
-            ru.oschepkov.BookstoreNewStruct.Years bookstore = deserializerFromJson.apply(pathXml);
-            serializerToXml.apply(pathJson, mapperBookStore.convert(bookstore));
+            ru.oschepkov.BookstoreNewStruct.Years years = deserializerFromJson.apply(pathXml);
+            serializerToXml.apply(pathJson, mapperBookStore.convert(years));
         } catch(IOException e) {
             e.printStackTrace();
         }

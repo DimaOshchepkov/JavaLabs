@@ -7,22 +7,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.junit.Test;
-import org.xml.sax.SAXException;
 
 import ru.oschepkov.BookstoreStruct.*;
 import ru.oschepkov.BookstoreStruct.Character;
 
-public class SerializeToJsonTest {
+public class SerializerToXmlTest {
+
 
     @Test
-    public void apply() throws JAXBException, ParserConfigurationException, SAXException, IOException
-    {
-         // Создаем объекты и заполняем данными
-            List<Character> characters1 = new ArrayList<>();
+    public void testApply2() throws IOException {
+        List<Character> characters1 = new ArrayList<>();
             characters1.add(new Character("Harry Potter", "Protagonist"));
             characters1.add(new Character("Hermione Granger", "Supporting"));
             characters1.add(new Character("Ron Weasley", "Supporting"));
@@ -54,8 +49,8 @@ public class SerializeToJsonTest {
             bookstore.getBooks().add(book1);
             bookstore.getBooks().add(book2);
 
-            (new SerializerToJson()).apply("src\\test\\resources\\out.json", bookstore);
-            assertTrue((new File("src\\test\\resources\\out.json")).exists());
+            (new SerializerToXml()).apply("src\\test\\resources\\out.xml", bookstore);
+            assertTrue((new File("src\\test\\resources\\out.xml")).exists());
             //(new File("src\\main\\resourses\\out.json")).delete();
     }
 }

@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class SerializeToJson {
+public class SerializerToJson {
     ObjectMapper objectMapper = new ObjectMapper();
 
     void apply(String path, Object obj) throws IOException {
