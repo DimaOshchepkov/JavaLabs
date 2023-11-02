@@ -2,19 +2,15 @@ package ru.oschepkov;
 
 import java.io.IOException;
 
-import ru.oschepkov.Validators.BookstoreValidator;
-import ru.oschepkov.Validators.IValidator;
 
 
 public class BookstoreConverterToXml implements IConverter{
 
-    final IValidator bookStoreValJson;
     final SerializerToXml serializerToXml;
     final DeserializerFromJson deserializerFromJson;
     final MapperBookstore mapperBookStore;
 
     BookstoreConverterToXml() throws Exception {
-        bookStoreValJson = new BookstoreValidator();
         serializerToXml = new SerializerToXml();
         deserializerFromJson = new DeserializerFromJson();
         mapperBookStore = new MapperBookstore();

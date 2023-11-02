@@ -17,7 +17,7 @@ public class Book {
     private String category;
 
     @JacksonXmlProperty
-    private String title;
+    private Title title;
 
     @JacksonXmlProperty
     private String author;
