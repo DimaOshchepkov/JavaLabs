@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.mapstruct.Mapper;
-
-@Mapper
 public class MapperBookstore {
 
     Years convert(Bookstore bookstore) {
