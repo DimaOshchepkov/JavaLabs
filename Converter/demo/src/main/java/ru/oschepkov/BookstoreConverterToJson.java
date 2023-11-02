@@ -1,5 +1,7 @@
 package ru.oschepkov;
 
+import java.io.IOException;
+
 import ru.oschepkov.Validators.BookstoreValidator;
 import ru.oschepkov.Validators.IValidator;
 
@@ -8,22 +10,24 @@ public class BookstoreConverterToJson implements IConverter {
     final IValidator bookStoreValXml;
     final SerializeToJson serializerToJson;
     final DeserializerFromXml deserializerFromXml;
-    final IMapperBookstore mapperBookStore;
+    final MapperBookstore mapperBookStore;
 
     BookstoreConverterToJson() throws Exception {
         bookStoreValXml = new BookstoreValidator();
         serializerToJson = new SerializeToJson();
         deserializerFromXml = new DeserializerFromXml();
-        mapperBookStore = new IMapperBookstoreImpl();
+        mapperBookStore = new MapperBookstore();
     }
 
     @Override
-    public void convert(String pathXml, String pathJson) throws Exception {
-        if (!bookStoreValXml.isValid(pathXml))
-            throw new Exception("incorrect xsd schema of file");
+    public void convert(String pathXml, String pathJson) {
+        try {
+            ru.oschepkov.BookstoreStruct.Bookstore bookstore = deserializerFromXml.apply(pathXml);
+            serializerToJson.apply(pathJson, mapperBookStore.convert(bookstore));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        ru.oschepkov.BookstoreStruct.Bookstore bookstore = deserializerFromXml.apply(pathXml);
-        serializerToJson.apply(pathJson, mapperBookStore.convert(bookstore));
     }
 
     @Override

@@ -1,21 +1,18 @@
 package ru.oschepkov;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-
-import lombok.val;
 import ru.oschepkov.BookstoreNewStruct.Year;
 import ru.oschepkov.BookstoreNewStruct.Years;
 import ru.oschepkov.BookstoreStruct.Book;
 import ru.oschepkov.BookstoreStruct.Bookstore;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.mapstruct.Mapper;
+
+@Mapper
 public class MapperBookstore {
 
     Years convert(Bookstore bookstore) {
