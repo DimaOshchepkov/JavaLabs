@@ -3,6 +3,7 @@ package ru.oschepkov.BookstoreNewStruct;
 import java.util.List;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Year {
 
+    @JacksonXmlText
     private String value;
 
     @JacksonXmlProperty(localName = "book")
