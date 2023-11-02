@@ -15,5 +15,3 @@ public class Price {
     @JacksonXmlProperty
     private String value;
 }
-
-

@@ -1,5 +1,7 @@
 package ru.oschepkov.BookstoreStruct;
 
+import java.util.List;
+
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import lombok.AllArgsConstructor;
@@ -15,17 +17,17 @@ public class Book {
     private String category;
 
     @JacksonXmlProperty
-    private Title title;
+    private String title;
 
     @JacksonXmlProperty
-    private Author author;
+    private String author;
 
     @JacksonXmlProperty
-    private Year year;
+    private String year;
 
     @JacksonXmlProperty
     private Price price;
 
     @JacksonXmlProperty
-    private Characters characters;
+    private List<Character> characters;
 }
