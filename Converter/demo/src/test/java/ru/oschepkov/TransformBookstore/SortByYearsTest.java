@@ -3,9 +3,7 @@ package ru.oschepkov.TransformBookstore;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -15,10 +13,10 @@ import ru.oschepkov.BookstoreStruct.Price;
 import ru.oschepkov.BookstoreStruct.Title;
 import ru.oschepkov.BookstoreStruct.Character;
 
-public class ITransformCommandTest {
+public class SortByYearsTest {
     @Test
-    public void testFunctionInterface() {
-         List<Character> characters1 = new ArrayList<>();
+    public void testApply() {
+                 List<Character> characters1 = new ArrayList<>();
             characters1.add(new Character("Harry Potter", "Protagonist"));
             characters1.add(new Character("Hermione Granger", "Supporting"));
             characters1.add(new Character("Ron Weasley", "Supporting"));
@@ -50,13 +48,9 @@ public class ITransformCommandTest {
             bookstore.getBooks().add(book1);
             bookstore.getBooks().add(book2);
 
-            ITransformCommand command = (Bookstore b) -> {
-                return new Bookstore(b.getBooks().stream()
-                    .sorted(Comparator.comparing(book -> book.getPrice().getValue()))
-                    .collect(Collectors.toList()));
-            };
+            ITransformCommand command = new SortByYears();
             bookstore = command.apply(bookstore);
 
-            assertTrue(Math.abs(bookstore.getBooks().get(0).getPrice().getValue() - 20) < Math.pow(-10, 6));
+            assertTrue(bookstore.getBooks().get(0).getYear() == 1965);
     }
 }
