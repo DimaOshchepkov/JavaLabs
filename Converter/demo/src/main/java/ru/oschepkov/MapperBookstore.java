@@ -15,7 +15,7 @@ public class MapperBookstore {
     Years convert(Bookstore bookstore) {
         MapperBook mapperBook = new MapperBookImpl();
         List<Year> years = new ArrayList();
-        Map<String, List<Book>> map = bookstore.getBooks().stream()
+        Map<Integer, List<Book>> map = bookstore.getBooks().stream()
             .collect(Collectors.groupingBy(Book::getYear));
         for (var entry : map.entrySet()) {
             Year year = Year.builder()

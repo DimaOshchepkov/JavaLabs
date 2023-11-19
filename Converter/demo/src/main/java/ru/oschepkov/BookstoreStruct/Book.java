@@ -2,7 +2,6 @@ package ru.oschepkov.BookstoreStruct;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -19,7 +18,7 @@ public class Book {
     private String category;
     private Title title;
     private String author;
-    private String year;
+    private int year;
     private Price price;
 
     @JacksonXmlProperty(localName = "character")

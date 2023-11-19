@@ -39,16 +39,16 @@ public class SerializeToJsonTest {
             book1.setCategory("Fantasy");
             book1.setTitle(new Title("en", "Harry Potter and the Philosopher's Stone"));
             book1.setAuthor("J.K. Rowling");
-            book1.setYear("1997");
-            book1.setPrice(new Price("USD", "20.00"));
+            book1.setYear(1997);
+            book1.setPrice(new Price("USD", 20));
             book1.setCharacters(characters1);
 
             Book book2 = new Book();
             book2.setCategory("Science Fiction");
             book2.setTitle(new Title("en", "Dune"));
             book2.setAuthor("Frank Herbert");
-            book2.setYear("1965");
-            book2.setPrice(new Price("USD", "25.00"));
+            book2.setYear(1965);
+            book2.setPrice(new Price("USD", 25));
             book2.setCharacters(characters2);
 
             bookstore.getBooks().add(book1);

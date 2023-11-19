@@ -16,5 +16,5 @@ public class Price {
     private String currency;
 
     @JacksonXmlText
-    private String value;
+    private double value;
 }

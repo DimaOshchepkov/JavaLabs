@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Year {
 
     @JacksonXmlText
-    private String value;
+    private int value;
 
     @JacksonXmlProperty(localName = "book")
     private List<Book> books;

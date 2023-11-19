@@ -18,7 +18,7 @@ public class Book {
     private String category;
     private Title title;
     private String author;
-    private String year;
+    private int year;
     private Price price;
     
     @JacksonXmlProperty(localName = "character")

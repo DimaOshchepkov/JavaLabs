@@ -3,7 +3,7 @@
     <title lang="en">Dune</title>
     <author>Frank Herbert</author>
     <year>1965</year>
-    <price currency="USD">25.00</price>
+    <price currency="USD">25.0</price>
     <characters>
       <character>
         <name>Paul Atreides</name>
@@ -23,7 +23,7 @@
     <title lang="en">Harry Potter and the Philosopher's Stone</title>
     <author>J.K. Rowling</author>
     <year>1997</year>
-    <price currency="USD">20.00</price>
+    <price currency="USD">20.0</price>
     <characters>
       <character>
         <name>Harry Potter</name>
