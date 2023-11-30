@@ -1,9 +1,9 @@
 package ru.oschepkov;
 
-import ru.oschepkov.BookstoreNewStruct.Year;
-import ru.oschepkov.BookstoreNewStruct.Years;
-import ru.oschepkov.BookstoreStruct.Book;
-import ru.oschepkov.BookstoreStruct.Bookstore;
+import ru.oschepkov.BookstoreNewStruct.YearJson;
+import ru.oschepkov.BookstoreNewStruct.YearsJson;
+import ru.oschepkov.BookstoreStruct.BookXml;
+import ru.oschepkov.BookstoreStruct.BookstoreXml;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 
 public class MapperBookstore {
 
-    Years convert(Bookstore bookstore) {
+    YearsJson convert(BookstoreXml bookstore) {
         MapperBook mapperBook = new MapperBookImpl();
-        List<Year> years = new ArrayList();
-        Map<Integer, List<Book>> map = bookstore.getBooks().stream()
-            .collect(Collectors.groupingBy(Book::getYear));
+        List<YearJson> years = new ArrayList();
+        Map<Integer, List<BookXml>> map = bookstore.getBooks().stream()
+            .collect(Collectors.groupingBy(BookXml::getYear));
         for (var entry : map.entrySet()) {
-            Year year = Year.builder()
+            YearJson year = YearJson.builder()
                 .books(entry.getValue().stream()
                     .map(mapperBook::convert)
                     .collect(Collectors.toList()))
@@ -26,17 +26,17 @@ public class MapperBookstore {
                 .build();
             years.add(year);
         }
-        return new Years(years);
+        return new YearsJson(years);
     } 
 
-    Bookstore convert(Years years) {
+    BookstoreXml convert(YearsJson years) {
         MapperBook mapperBook = new MapperBookImpl();
-        List<Book> books = new ArrayList();
+        List<BookXml> books = new ArrayList();
         years.getYears().forEach(year -> {
             books.addAll(year.getBooks().stream()
                 .map(mapperBook::convert)
                 .collect(Collectors.toList()));
         });
-        return new Bookstore(books);
+        return new BookstoreXml(books);
     }
 }

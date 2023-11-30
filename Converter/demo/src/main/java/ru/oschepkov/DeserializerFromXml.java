@@ -5,12 +5,12 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-import ru.oschepkov.BookstoreStruct.Bookstore;
+import ru.oschepkov.BookstoreStruct.BookstoreXml;
 
 public class DeserializerFromXml {
     XmlMapper xmlMapper = new XmlMapper();
-    Bookstore apply(String path) throws IOException{
+    BookstoreXml apply(String path) throws IOException{
         File file = new File(path);
-        return xmlMapper.readValue(file, Bookstore.class);
+        return xmlMapper.readValue(file, BookstoreXml.class);
     }
 }

@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class BookJson {
 
     @JacksonXmlProperty(isAttribute = true)
     private String category;
-    private Title title;
+    private TitleJson title;
     private String author;
     private int year;
-    private Price price;
+    private PriceJson price;
     
     @JacksonXmlProperty(localName = "character")
     @JacksonXmlElementWrapper(localName = "characters")
-    private List<Character> characters;
+    private List<CharacterJson> characters;
 }

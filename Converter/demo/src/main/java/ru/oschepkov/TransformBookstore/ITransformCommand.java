@@ -1,8 +1,8 @@
 package ru.oschepkov.TransformBookstore;
 
-import ru.oschepkov.BookstoreStruct.Bookstore;
+import ru.oschepkov.BookstoreStruct.BookstoreXml;
 
 @FunctionalInterface
 public interface ITransformCommand {
-    Bookstore apply(Bookstore bookstore);
+    BookstoreXml apply(BookstoreXml bookstore);
 }

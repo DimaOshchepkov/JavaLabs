@@ -18,7 +18,7 @@ public class BookstoreConverterToJson implements IConverter {
     @Override
     public void convert(String pathXml, String pathJson) {
         try {
-            ru.oschepkov.BookstoreStruct.Bookstore bookstore = deserializerFromXml.apply(pathXml);
+            ru.oschepkov.BookstoreStruct.BookstoreXml bookstore = deserializerFromXml.apply(pathXml);
             serializerToJson.apply(pathJson, mapperBookStore.convert(bookstore));
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,7 +1,7 @@
 package ru.oschepkov.TransformBookstore;
 
 import lombok.AllArgsConstructor;
-import ru.oschepkov.BookstoreStruct.Bookstore;
+import ru.oschepkov.BookstoreStruct.BookstoreXml;
 
 @AllArgsConstructor
 public class TransformCommandInvoker {
@@ -11,7 +11,7 @@ public class TransformCommandInvoker {
         this.command = command;
     }
 
-    Bookstore invoke(Bookstore bookstore) {
+    BookstoreXml invoke(BookstoreXml bookstore) {
         return command.apply(bookstore);
     }
 }
