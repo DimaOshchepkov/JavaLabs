@@ -1,4 +1,4 @@
-package ru.oschepkov.TransformBookstore;
+package ru.oschepkov.transformbookstore;
 
 import static org.junit.Assert.assertTrue;
 
@@ -14,7 +14,6 @@ import ru.oschepkov.bookstore.BookstoreXml;
 import ru.oschepkov.bookstore.CharacterXml;
 import ru.oschepkov.bookstore.PriceXml;
 import ru.oschepkov.bookstore.TitleXml;
-import ru.oschepkov.transformbookstore.ITransformCommand;
 
 public class ITransformCommandTest {
     @Test

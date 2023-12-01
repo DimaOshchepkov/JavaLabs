@@ -1,6 +1,6 @@
-package ru.oschepkov.TransformBookstore;
+package ru.oschepkov.transformbookstore;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,6 @@ import ru.oschepkov.bookstore.BookstoreXml;
 import ru.oschepkov.bookstore.CharacterXml;
 import ru.oschepkov.bookstore.PriceXml;
 import ru.oschepkov.bookstore.TitleXml;
-import ru.oschepkov.transformbookstore.ITransformCommand;
-import ru.oschepkov.transformbookstore.SortByYears;
 
 public class SortByYearsTest {
     @Test
@@ -53,6 +51,6 @@ public class SortByYearsTest {
             ITransformCommand command = new SortByYears();
             bookstore = command.apply(bookstore);
 
-            assertTrue(bookstore.getBooks().get(0).getYear() == 1965);
+            assertEquals(1965, bookstore.getBooks().get(0).getYear());
     }
 }

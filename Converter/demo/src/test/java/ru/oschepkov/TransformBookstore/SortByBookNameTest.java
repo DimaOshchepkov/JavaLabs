@@ -1,11 +1,9 @@
-package ru.oschepkov.TransformBookstore;
+package ru.oschepkov.transformbookstore;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -14,8 +12,6 @@ import ru.oschepkov.bookstore.BookstoreXml;
 import ru.oschepkov.bookstore.CharacterXml;
 import ru.oschepkov.bookstore.PriceXml;
 import ru.oschepkov.bookstore.TitleXml;
-import ru.oschepkov.transformbookstore.ITransformCommand;
-import ru.oschepkov.transformbookstore.SortByBookName;
 
 public class SortByBookNameTest {
     @Test
@@ -55,6 +51,6 @@ public class SortByBookNameTest {
             ITransformCommand command = new SortByBookName();
             bookstore = command.apply(bookstore);
 
-            assertTrue(bookstore.getBooks().get(0).getTitle().getValue().equals("Dune"));
+            assertEquals("Dune", bookstore.getBooks().get(0).getTitle().getValue());
     }
 }
