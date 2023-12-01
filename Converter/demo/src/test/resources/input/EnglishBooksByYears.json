@@ -1,7 +1,7 @@
 {
   "year": [
       {
-          "value": "1965",
+          "value": 1965,
           "books": [
               {
                   "category": "Science Fiction",
@@ -10,10 +10,10 @@
                       "value": "Dune"
                   },
                   "author": "Frank Herbert",
-                  "year": "1965",
+                  "year": 1965,
                   "price": {
                       "currency": "USD",
-                      "value": "25.00"
+                      "value": 25.00
                   },
                   "characters": [
                       {
@@ -33,7 +33,7 @@
           ]
       },
       {
-          "value": "1997",
+          "value": 1997,
           "books": [
               {
                   "category": "Fantasy",
@@ -42,10 +42,10 @@
                       "value": "Harry Potter and the Philosopher's Stone"
                   },
                   "author": "J.K. Rowling",
-                  "year": "1997",
+                  "year": 1997,
                   "price": {
                       "currency": "USD",
-                      "value": "20.00"
+                      "value": 20.00
                   },
                   "characters": [
                       {

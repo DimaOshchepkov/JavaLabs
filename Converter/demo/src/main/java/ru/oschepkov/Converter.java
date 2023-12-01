@@ -9,16 +9,16 @@ import ru.oschepkov.years.YearsJson;
 @Builder
 public class Converter{
     
-    IReader reader;
-    IWriter writer;
-    MapperBookstore mapper;
+    private IReader reader;
+    private IWriter writer;
+    private MapperBookstore mapper;
 
     public void convert(String sourcePath, String targetPath) throws ReadFileException, WriteFileException {
         Object obj = reader.read(sourcePath);
         switch (obj) {
             case BookstoreXml bookstore -> writer.write(targetPath, mapper.convert(bookstore));
             case YearsJson years -> writer.write(targetPath,  mapper.convert(years));
-            default -> throw new ReadFileException("Файл не удовлетворяет требуемой структурой");
+            default -> throw new ReadFileException("Файл не удовлетворяет требуемой структуре");
         }
     }
 }

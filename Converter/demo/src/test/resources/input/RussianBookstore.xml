@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bookstore>
+    <book category="Фэнтези">
+        <title lang="ru">Гарри Поттер и Философский камень</title>
+        <author>Джоан Роулинг</author>
+        <year>1997</year>
+        <price currency="RUB">1500.00</price>
+        <characters>
+            <character>
+                <name>Гарри Поттер</name>
+                <role>Главный герой</role>
+            </character>
+            <character>
+                <name>Гермиона Грейнджер</name>
+                <role>Поддерживающий</role>
+            </character>
+            <character>
+                <name>Рон Уизли</name>
+                <role>Поддерживающий</role>
+            </character>
+        </characters>
+    </book>
+    <book category="Научная фантастика">
+        <title lang="ru">Дюна</title>
+        <author>Фрэнк Герберт</author>
+        <year>1965</year>
+        <price currency="RUB">1200.00</price>
+        <characters>
+            <character>
+                <name>Павел Атрейдес</name>
+                <role>Главный герой</role>
+            </character>
+            <character>
+                <name>Лит-Кайнс</name>
+                <role>Поддерживающий</role>
+            </character>
+            <character>
+                <name>Барон Владимир Гарконнен</name>
+                <role>Антагонист</role>
+            </character>
+        </characters>
+    </book>
+</bookstore>

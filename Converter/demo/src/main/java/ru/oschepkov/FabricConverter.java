@@ -8,7 +8,9 @@ import ru.oschepkov.converterexeption.UnknownFileTypeException;
 
 public class FabricConverter {
 
-    private FabricConverter() {}
+    private FabricConverter() {
+    }
+
     private static FabricConverter instance = null;
 
     public static FabricConverter getInstance() {
@@ -17,11 +19,11 @@ public class FabricConverter {
         }
         return instance;
     }
-    
-    /** 
+
+    /**
      * @param sourcePath путь до файла конвертации
-     * Если файл .xml, то конвертер переводит .xml в .json,
-     * иначе .json в .xml
+     *                   Если файл .xml, то конвертер переводит .xml в .json,
+     *                   иначе .json в .xml
      * @return IConverter
      * @throws IOException
      * @throws ReadFileException
@@ -33,28 +35,34 @@ public class FabricConverter {
         try (FileReader r = new FileReader(sourcePath)) {
             int character = r.read();
             if (character == -1) {
-                throw new UnknownFileTypeException("Неизвестный тип файла");
-            }
-            char firstChar = (char) character;
-            switch (firstChar) {
-                case '<' -> {
+                if (sourcePath.endsWith(".xml")) {
                     reader = new XML();
                     writer = new JSON();
-                }
-                case '{' -> {
+                } else if (sourcePath.endsWith(".json")) {
                     reader = new JSON();
                     writer = new XML();
-                }
-                default ->
+                } else
                     throw new UnknownFileTypeException("Неизвестный тип файла");
+            } else {
+                switch ((char) character) {
+                    case '<' -> {
+                        reader = new XML();
+                        writer = new JSON();
+                    }
+                    case '{' -> {
+                        reader = new JSON();
+                        writer = new XML();
+                    }
+                    default ->
+                        throw new UnknownFileTypeException("Неизвестный тип файла");
+                }
             }
             return Converter.builder()
-                .reader(reader)
-                .writer(writer)
-                .mapper(new MapperBookstore())
-                .build();
-        }
-        catch (IOException exception) {
+                    .reader(reader)
+                    .writer(writer)
+                    .mapper(new MapperBookstore())
+                    .build();
+        } catch (IOException exception) {
             throw new ReadFileException("Не удалось считать файл", exception);
         }
 

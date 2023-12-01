@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <bookstore>
   <book category="Fantasy">
     <title lang="en">Harry Potter and the Philosopher's Stone</title>
     <author>J.K. Rowling</author>
     <year>1997</year>
-    <price currency="USD">20</price>
+    <price currency="USD">20.00</price>
     <characters>
       <character>
         <name>Harry Potter</name>
@@ -23,7 +24,7 @@
     <title lang="en">Dune</title>
     <author>Frank Herbert</author>
     <year>1965</year>
-    <price currency="USD">25</price>
+    <price currency="USD">25.00</price>
     <characters>
       <character>
         <name>Paul Atreides</name>
@@ -40,3 +41,4 @@
     </characters>
   </book>
 </bookstore>
+  
