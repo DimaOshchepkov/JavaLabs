@@ -31,6 +31,9 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
+.idea
+.vscode
+
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
@@ -177,5 +180,7 @@ buildNumber.properties
 # Ignore all local history of files
 .history
 .ionide
+
+META-INF
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,intellij,java,visualstudiocode
