@@ -1,9 +1,9 @@
-package ru.oschepkov.TransformBookstore;
+package ru.oschepkov.transformbookstore;
 
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
-import ru.oschepkov.BookstoreStruct.BookstoreXml;
+import ru.oschepkov.bookstore.BookstoreXml;
 
 public class SortByBookName implements ITransformCommand {
     

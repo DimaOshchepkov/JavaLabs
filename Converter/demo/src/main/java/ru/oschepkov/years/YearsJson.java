@@ -1,4 +1,6 @@
-package ru.oschepkov.BookstoreStruct;
+package ru.oschepkov.years;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
@@ -9,17 +11,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
-@JacksonXmlRootElement(localName = "bookstore")
-public class BookstoreXml {
-
+@NoArgsConstructor
+@JacksonXmlRootElement(localName = " years")
+public class YearsJson {
+    
     @JacksonXmlElementWrapper(useWrapping = false)
-    @JsonProperty("book")
-    private List<BookXml> books;
+    @JsonProperty("year")
+    private List<YearJson> years;
 }
-

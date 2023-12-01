@@ -9,8 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import ru.oschepkov.BookstoreStruct.*;
-import ru.oschepkov.BookstoreStruct.CharacterXml;
+import ru.oschepkov.bookstore.*;
 
 public class SerializerToXmlTest {
 

@@ -7,11 +7,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-import ru.oschepkov.BookstoreStruct.BookXml;
-import ru.oschepkov.BookstoreStruct.BookstoreXml;
-import ru.oschepkov.BookstoreStruct.PriceXml;
-import ru.oschepkov.BookstoreStruct.TitleXml;
-import ru.oschepkov.BookstoreStruct.CharacterXml;
+import ru.oschepkov.bookstore.BookXml;
+import ru.oschepkov.bookstore.BookstoreXml;
+import ru.oschepkov.bookstore.CharacterXml;
+import ru.oschepkov.bookstore.PriceXml;
+import ru.oschepkov.bookstore.TitleXml;
+import ru.oschepkov.transformbookstore.ITransformCommand;
+import ru.oschepkov.transformbookstore.SortByYears;
 
 public class SortByYearsTest {
     @Test

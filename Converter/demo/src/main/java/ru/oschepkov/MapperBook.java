@@ -7,8 +7,8 @@ import org.mapstruct.Mapping;
 public interface MapperBook {
     
     @Mapping(target = ".", source = ".")
-    ru.oschepkov.BookstoreStruct.BookXml convert(ru.oschepkov.BookstoreNewStruct.BookJson bookstore);
+    ru.oschepkov.bookstore.BookXml convert(ru.oschepkov.years.BookJson bookstore);
 
     @Mapping(target = ".", source = ".")
-    ru.oschepkov.BookstoreNewStruct.BookJson convert(ru.oschepkov.BookstoreStruct.BookXml bookstore);
+    ru.oschepkov.years.BookJson convert(ru.oschepkov.bookstore.BookXml bookstore);
 }

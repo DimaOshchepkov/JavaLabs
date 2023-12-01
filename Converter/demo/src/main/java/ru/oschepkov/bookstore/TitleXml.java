@@ -1,4 +1,4 @@
-package ru.oschepkov.BookstoreNewStruct;
+package ru.oschepkov.bookstore;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TitleJson {
+public class TitleXml {
     
     @JacksonXmlProperty(isAttribute = true)
     public String lang;

@@ -13,8 +13,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
-import ru.oschepkov.BookstoreStruct.*;
-import ru.oschepkov.BookstoreStruct.CharacterXml;
+import ru.oschepkov.bookstore.*;
 
 public class SerializeToJsonTest {
 

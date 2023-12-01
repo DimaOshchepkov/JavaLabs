@@ -1,7 +1,7 @@
 package ru.oschepkov;
 
-import java.io.IOException;
+import ru.oschepkov.converterexeption.WriteFileException;
 
 public interface IWriter {
-    void write(String path, Object obj) throws IOException;
+    void write(String path, Object obj) throws WriteFileException;
 }

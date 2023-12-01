@@ -1,10 +1,10 @@
-package ru.oschepkov.TransformBookstore;
+package ru.oschepkov.transformbookstore;
 
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
-import ru.oschepkov.BookstoreStruct.BookXml;
-import ru.oschepkov.BookstoreStruct.BookstoreXml;
+import ru.oschepkov.bookstore.BookXml;
+import ru.oschepkov.bookstore.BookstoreXml;
 
 public class SortByYears implements ITransformCommand{
 

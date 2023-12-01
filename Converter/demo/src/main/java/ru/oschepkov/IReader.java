@@ -1,8 +1,8 @@
 package ru.oschepkov;
 
-import java.io.IOException;
+import ru.oschepkov.converterexeption.ReadFileException;
 
 
 public interface IReader {
-    Object read(String path) throws IOException;
+    Object read(String path) throws ReadFileException;
 }

@@ -1,4 +1,4 @@
-package ru.oschepkov.BookstoreStruct;
+package ru.oschepkov.bookstore;
 
 import java.util.List;
 

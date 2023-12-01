@@ -1,25 +1,20 @@
-package ru.oschepkov.BookstoreNewStruct;
-
-import java.util.List;
+package ru.oschepkov.years;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class YearJson {
+public class TitleJson {
+    
+    @JacksonXmlProperty(isAttribute = true)
+    public String lang;
 
     @JacksonXmlText
-    private int value;
-
-    @JacksonXmlProperty(localName = "book")
-    private List<BookJson> books;
+    public String value;
 }
-
