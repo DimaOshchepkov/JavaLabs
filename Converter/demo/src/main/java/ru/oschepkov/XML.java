@@ -3,31 +3,32 @@ package ru.oschepkov;
 import java.io.File;
 import java.io.IOException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import ru.oschepkov.BookstoreStruct.BookstoreXml;
 
 
 public class XML implements IReader, IWriter {
-    
-    ObjectMapper objectMapper = new ObjectMapper();
+
+    XmlMapper xmlMapper = new XmlMapper();
+    XML() {
+        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+    }
     
     /** 
-     * @param path путь до файла *.json, в которых будет записан объект
+     * @param path путь до файла для записи
      * @param obj объект для записи
      * @throws IOException
      */
     @Override
     public void write(String path, Object obj) throws IOException {
-        ObjectWriter writer = objectMapper.writerWithDefaultPrettyPrinter();
-        writer.writeValue(new File(path), obj);
+        
+        xmlMapper.writeValue(new File(path), obj);
     }
 
-    XmlMapper xmlMapper = new XmlMapper();
     /** 
-     * @param path путь до файла *.xml для считывания
+     * @param path путь до файла для считывания
      * @return BookstoreXml
      * @throws IOException
      */

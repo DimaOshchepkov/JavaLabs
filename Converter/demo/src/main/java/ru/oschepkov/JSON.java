@@ -4,16 +4,16 @@ import java.io.File;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import ru.oschepkov.BookstoreNewStruct.YearsJson;
 
 public class JSON implements IWriter, IReader {
 
-    XmlMapper xmlMapper = new XmlMapper();
+    ObjectMapper jsonMapper = new ObjectMapper();
+    ObjectWriter writer;
     JSON() {
-        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        writer = jsonMapper.writerWithDefaultPrettyPrinter();
     }
     
     /** 
@@ -22,13 +22,10 @@ public class JSON implements IWriter, IReader {
      * @throws IOException
      */
     @Override
-    public void write(String path, Object obj) throws IOException{  
-        xmlMapper.writeValue(new File(path), obj);
+    public void write(String path, Object obj) throws IOException{   
+        writer.writeValue(new File(path), obj);
     }
 
-    ObjectMapper jsonMapper = new ObjectMapper();
-
-    
     /** 
      * @param path путь до файла для конвертации
      * @return YearsJson
