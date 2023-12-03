@@ -13,6 +13,13 @@ public class Converter{
     private IWriter writer;
     private MapperBookstore mapper;
 
+    
+    /** Конвертирует исходный файл в целевой source -> target
+     * @param sourcePath
+     * @param targetPath
+     * @throws ReadFileException
+     * @throws WriteFileException
+     */
     public void convert(String sourcePath, String targetPath) throws ReadFileException, WriteFileException {
         Object obj = reader.read(sourcePath);
         switch (obj) {

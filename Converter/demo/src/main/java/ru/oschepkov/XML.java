@@ -54,7 +54,7 @@ public class XML implements IReader, IWriter {
     }
 
     /** 
-     * @param path путь до файла для считывания
+     * @param path путь до считываемого файла
      * @return BookstoreXml
      * @throws ReadFileException
      */

@@ -3,12 +3,15 @@ package ru.oschepkov;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import ru.oschepkov.bookstore.BookXml;
+import ru.oschepkov.years.BookJson;
+
 @Mapper
 public interface MapperBook {
     
     @Mapping(target = ".", source = ".")
-    ru.oschepkov.bookstore.BookXml convert(ru.oschepkov.years.BookJson bookstore);
+    BookXml convert(BookJson bookstore);
 
     @Mapping(target = ".", source = ".")
-    ru.oschepkov.years.BookJson convert(ru.oschepkov.bookstore.BookXml bookstore);
+    BookJson convert(BookXml bookstore);
 }

@@ -21,9 +21,9 @@ import ru.oschepkov.years.YearsJson;
 @Slf4j
 public class JSON implements IWriter, IReader {
 
-    ObjectMapper jsonMapper = new ObjectMapper();
-    ObjectWriter writerObj;
-    String encoding;
+    private ObjectMapper jsonMapper = new ObjectMapper();
+    private ObjectWriter writerObj;
+    private String encoding;
     JSON() {
         this("utf-8");
     }
