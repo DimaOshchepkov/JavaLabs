@@ -2,10 +2,10 @@ package com.ochchepkov;
 
 import com.ochchepkov.LSCommans.ILSCommand;
 
-public class PWD implements IComand{
+public class PWD implements ICommand{
 
     @Override
-    public String apply(StringBuilder path, ILSCommand value) {
+    public String apply() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'apply'");
     }

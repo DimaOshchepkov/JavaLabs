@@ -4,19 +4,21 @@ import java.io.File;
 
 public class CDDotDot implements ICommand {
 
+    private WorkingDirectory wd = WorkingDirectory.getInstance();
+
     @Override
-    public void apply(String filePath) throws IllegalArgumentException {
-        File file = new File(filePath);
+    public void apply() throws IllegalStateException {
+        File file = new File(wd.getPath());
         File parentDirectory = file.getParentFile();
         
         if (parentDirectory == null) {
-            throw new IllegalArgumentException("No parent directory");
+            throw new IllegalStateException("No parent directory");
         }
         if (!file.exists()){
-           throw new IllegalArgumentException("No such directory");
+           throw new IllegalStateException("No such directory");
         }
         
-        filePath = parentDirectory.getAbsolutePath();
+        wd = WorkingDirectory.getInstance(parentDirectory.getAbsolutePath());
     }
     
 }
