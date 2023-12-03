@@ -15,6 +15,11 @@ public class FabricConverter {
 
     private static FabricConverter instance = null;
 
+    /**
+     * Получить экземпляр класса
+     * 
+     * @return FabricConverter
+     */
     public static FabricConverter getInstance() {
         if (instance == null) {
             instance = new FabricConverter();
@@ -23,47 +28,44 @@ public class FabricConverter {
     }
 
     /**
-     * @param sourcePath путь до файла конвертации
-     *                   Если файл .xml, то конвертер переводит .xml в .json,
-     *                   иначе .json в .xml
+     * @param sourcePath     путь до файла конвертации
+     *                       Если файл .xml, то конвертер переводит .xml в .json,
+     *                       иначе .json в .xml
+     * @param sourceEncoding кодировка конвертируемого файла (utf-8, utf-16,
+     *                       windows-1251,...)
+     * @param targetEncoding кодировка конченого файла (utf-8, utf-16,
+     *                       windows-1251,...)
      * @return IConverter
      * @throws IOException
      * @throws ReadFileException
      * @throws UnknownFileTypeException
      */
-    public Converter create(String sourcePath, String sourceEncoding, String targetEncoding) 
+    public Converter create(String sourcePath, String sourceEncoding, String targetEncoding)
             throws ReadFileException, UnknownFileTypeException {
-        IReader reader;
-        IWriter writer;
+        
+        FileType fileType;
         try (FileReader r = new FileReader(sourcePath)) {
             int character = r.read();
             if (character == -1) {
                 log.warn("Файл пуст");
-                if (sourcePath.endsWith(".xml")) {
+                fileType = determineFileTypeByExtention(sourcePath);
+            } else {
+                fileType = determineFileTypeByFirstSymbol((char) character);
+            }
+
+            IReader reader;
+            IWriter writer;
+            switch (fileType) {
+                case FileType.XML -> {
                     reader = new XML(sourceEncoding);
                     writer = new JSON(targetEncoding);
-                } else if (sourcePath.endsWith(".json")) {
-                    reader = new JSON(sourceEncoding);
-                    writer = new XML(targetEncoding);
-                } else {
-                    log.error("Неизвестный тип файла");
+                }
+                case FileType.JSON -> {
+                    reader = new JSON(targetEncoding);
+                    writer = new XML(sourceEncoding);
+                }
+                default -> 
                     throw new UnknownFileTypeException("Неизвестный тип файла");
-                }
-            } else {
-                switch ((char) character) {
-                    case '<' -> {
-                        reader = new XML(sourceEncoding);
-                        writer = new JSON(targetEncoding);
-                    }
-                    case '{' -> {
-                        reader = new JSON(sourceEncoding);
-                        writer = new XML(targetEncoding);
-                    }
-                    default -> {
-                        log.error("Неизвестный тип файла");
-                        throw new UnknownFileTypeException("Неизвестный тип файла");
-                    }
-                }
             }
             return Converter.builder()
                     .reader(reader)
@@ -73,13 +75,51 @@ public class FabricConverter {
         } catch (IOException exception) {
             log.error(exception.getMessage(), exception);
             throw new ReadFileException("Не удалось считать файл", exception);
-            
+
         }
     }
 
-    public Converter create(String sourcePath) 
+    /**
+     * @param sourcePath путь до файла конвертации
+     *                   Если файл .xml, то конвертер переводит .xml в .json,
+     *                   иначе .json в .xml
+     * @return Converter
+     * @throws ReadFileException
+     * @throws UnknownFileTypeException
+     */
+    public Converter create(String sourcePath)
             throws ReadFileException, UnknownFileTypeException {
         return create(sourcePath, "utf-8", "utf-8");
     }
 
+    private FileType determineFileTypeByFirstSymbol(char character) throws UnknownFileTypeException {
+        switch (character) {
+            case '<' -> {
+                return FileType.XML;
+            }
+            case '{' -> {
+                return FileType.JSON;
+            }
+            default -> {
+                log.error("Неизвестный тип файла");
+                throw new UnknownFileTypeException("Неизвестный тип файла");
+            }
+        }
+    }
+
+    private FileType determineFileTypeByExtention(String sourcePath) throws UnknownFileTypeException {
+        if (sourcePath.endsWith(".xml")) {
+            return FileType.XML;
+        } else if (sourcePath.endsWith(".json")) {
+            return FileType.JSON;
+        } else {
+            log.error("Неизвестный тип файла");
+            throw new UnknownFileTypeException("Неизвестный тип файла");
+        }
+    }
+
+    private enum FileType {
+        XML,
+        JSON,
+    }
 }
