@@ -43,4 +43,20 @@ public class XMLTest {
         xml.write("src\\test\\resources\\out\\bookstore.xml", bookstore);
         assertTrue((new File("src\\test\\resources\\out\\bookstore.xml")).exists());
     }
+
+    @Test
+    public void testWriteEncondingUtf_16() throws WriteFileException {
+        BookstoreXml bookstore = bookstoreInstance.getEnglishBooks();
+        XML xml = new XML("utf-16");
+        xml.write("src\\test\\resources\\out\\bookstoreUtf_16.xml", bookstore);
+        assertTrue((new File("src\\test\\resources\\out\\bookstoreUtf_16.xml")).exists());
+    }
+
+    @Test
+    public void testWriteEncondingWindows_1251() throws WriteFileException {
+        BookstoreXml bookstore = bookstoreInstance.getRussianBooks();
+        XML xml = new XML("windows-1251");
+        xml.write("src\\test\\resources\\out\\bookstoreWindows_1251.xml", bookstore);
+        assertTrue((new File("src\\test\\resources\\out\\bookstoreWindows_1251.xml")).exists());
+    }
 }
