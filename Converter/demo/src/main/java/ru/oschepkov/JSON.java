@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+import lombok.val;
 import lombok.extern.slf4j.Slf4j;
 import ru.oschepkov.converterexeption.ReadFileException;
 import ru.oschepkov.converterexeption.WriteFileException;
@@ -21,14 +22,14 @@ import ru.oschepkov.years.YearsJson;
 @Slf4j
 public class JSON implements IWriter, IReader {
 
-    private ObjectMapper jsonMapper = new ObjectMapper();
-    private ObjectWriter writerObj;
-    private String encoding;
+    private final ObjectMapper jsonMapper = new ObjectMapper();
+    private final ObjectWriter writerObj;
+    private final String encoding;
     JSON() {
         this("utf-8");
     }
 
-    JSON(String encoding) {
+    JSON(final String encoding) {
         writerObj = jsonMapper.writerWithDefaultPrettyPrinter();
         this.encoding = encoding;
     }
@@ -39,16 +40,16 @@ public class JSON implements IWriter, IReader {
      * @throws WriteFileException
      */
     @Override
-    public void write(String path, Object obj) throws WriteFileException{  
+    public void write(final String path, final Object obj) throws WriteFileException{  
         try (OutputStream outputStream = new FileOutputStream(new File(path))){ 
-            OutputStreamWriter writer = new OutputStreamWriter(outputStream, encoding);
+            val writer = new OutputStreamWriter(outputStream, encoding);
             writerObj.writeValue(writer, obj);
         }
-        catch (UnsupportedEncodingException exception) {
+        catch (final UnsupportedEncodingException exception) {
             log.error(exception.getMessage(), exception);
             throw new WriteFileException("Данная кодировка не поддерживается", exception);
         }
-        catch (IOException exception) {
+        catch (final IOException exception) {
             log.error(exception.getMessage(), exception);
             throw new WriteFileException("Ошибка записи в файл", exception);
         }
@@ -60,16 +61,16 @@ public class JSON implements IWriter, IReader {
      * @throws ReadFileException
      */
     @Override
-    public YearsJson read(String path) throws ReadFileException {
+    public YearsJson read(final String path) throws ReadFileException {
         try (InputStream inputStream = new FileInputStream(new File(path))){
-            InputStreamReader reader = new InputStreamReader(inputStream, encoding);
+            val reader = new InputStreamReader(inputStream, encoding);
             return jsonMapper.readValue(reader, YearsJson.class);
         }
-        catch (UnsupportedEncodingException exception) {
+        catch (final UnsupportedEncodingException exception) {
             log.error(exception.getMessage(), exception);
             throw new ReadFileException("Данная кодировка не поддерживается", exception);
         }
-        catch (IOException exception) {
+        catch (final IOException exception) {
             log.error(exception.getMessage(), exception);
             throw new ReadFileException("Ошибка записи в файл", exception);
         }

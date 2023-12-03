@@ -2,6 +2,7 @@ package ru.oschepkov;
 
 import java.util.Arrays;
 
+import lombok.val;
 import ru.oschepkov.years.BookJson;
 import ru.oschepkov.years.CharacterJson;
 import ru.oschepkov.years.PriceJson;
@@ -12,7 +13,7 @@ import ru.oschepkov.years.YearsJson;
 public class YearsInstance {
 
     public YearsJson getEnglishBooksByYears() {
-        YearJson year1965 = YearJson.builder()
+        val year1965 = YearJson.builder()
                 .value(1965)
                 .books(Arrays.asList(
                         BookJson.builder()
@@ -51,7 +52,7 @@ public class YearsInstance {
                                 .build()))
                 .build();
 
-        YearJson year1990 = YearJson.builder()
+        val year1990 = YearJson.builder()
                 .value(1990)
                 .books(Arrays.asList(
                         BookJson.builder()
@@ -82,7 +83,7 @@ public class YearsInstance {
     }
 
     public YearsJson getRussianBooksByYears() {
-        YearJson year1965 = YearJson.builder()
+        val year1965 = YearJson.builder()
                 .value(1965)
                 .books(Arrays.asList(
                         BookJson.builder()
@@ -109,7 +110,7 @@ public class YearsInstance {
                                 .build()))
                 .build();
 
-        YearJson year1990 = YearJson.builder()
+        val year1990 = YearJson.builder()
                 .value(1990)
                 .books(Arrays.asList(
                         BookJson.builder()

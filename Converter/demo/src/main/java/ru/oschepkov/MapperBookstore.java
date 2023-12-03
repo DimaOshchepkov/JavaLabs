@@ -8,12 +8,14 @@ import ru.oschepkov.years.YearsJson;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.val;
+
 public class MapperBookstore {
 
-    public YearsJson convert(BookstoreXml bookstore) {
-        MapperBook mapperBook = new MapperBookImpl();
+    public YearsJson convert(final BookstoreXml bookstore) {
+        val mapperBook = new MapperBookImpl();
         
-        List<YearJson> years = bookstore.getBooks().stream()
+        final List<YearJson> years = bookstore.getBooks().stream()
             .collect(Collectors.groupingBy(BookXml::getYear))
             .entrySet().stream()
             .map(entry -> YearJson.builder()
@@ -27,10 +29,10 @@ public class MapperBookstore {
         return new YearsJson(years);
     }
 
-    public BookstoreXml convert(YearsJson years) {
-        MapperBook mapperBook = new MapperBookImpl();
+    public BookstoreXml convert(final YearsJson years) {
+        val mapperBook = new MapperBookImpl();
         
-        List<BookXml> books = years.getYears().stream()
+        final List<BookXml> books = years.getYears().stream()
             .flatMap(year -> year.getBooks().stream())
             .map(mapperBook::convert)
             .collect(Collectors.toList());

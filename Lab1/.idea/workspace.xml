@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23c9c36e-bee1-47de-b988-89e6937859b2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../RegularJava/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../RegularJava/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/demo/src/main/java/com/ochchepkov/IComand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/demo/src/main/java/com/ochchepkov/IComand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/demo/src/main/java/com/ochchepkov/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/demo/src/main/java/com/ochchepkov/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/demo/src/main/java/com/ochchepkov/TestCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/demo/src/main/java/com/ochchepkov/WorkingDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/demo/src/main/java/com/ochchepkov/WorkingDirectory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +19,9 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2WwrBIwUg1Lpe5hi5A2D7b1AhTV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,7 +32,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "lab2",
     "last_opened_file_path": "D:/Programming/Проекты на java/Lab1",
     "vue.rearranger.settings.migration": "true"
   }
@@ -42,6 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697654347746</updated>
       <workItem from="1697654349121" duration="27000" />
+      <workItem from="1698347651286" duration="59000" />
     </task>
     <servers />
   </component>

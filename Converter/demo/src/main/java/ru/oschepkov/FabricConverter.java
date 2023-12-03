@@ -40,12 +40,12 @@ public class FabricConverter {
      * @throws ReadFileException
      * @throws UnknownFileTypeException
      */
-    public Converter create(String sourcePath, String sourceEncoding, String targetEncoding)
+    public Converter create(final String sourcePath, final String sourceEncoding, final String targetEncoding)
             throws ReadFileException, UnknownFileTypeException {
         
         FileType fileType;
         try (FileReader r = new FileReader(sourcePath)) {
-            int character = r.read();
+            final int character = r.read();
             if (character == -1) {
                 log.warn("Файл пуст");
                 fileType = determineFileTypeByExtention(sourcePath);
@@ -72,7 +72,7 @@ public class FabricConverter {
                     .writer(writer)
                     .mapper(new MapperBookstore())
                     .build();
-        } catch (IOException exception) {
+        } catch (final IOException exception) {
             log.error(exception.getMessage(), exception);
             throw new ReadFileException("Не удалось считать файл", exception);
 
@@ -87,12 +87,12 @@ public class FabricConverter {
      * @throws ReadFileException
      * @throws UnknownFileTypeException
      */
-    public Converter create(String sourcePath)
+    public Converter create(final String sourcePath)
             throws ReadFileException, UnknownFileTypeException {
         return create(sourcePath, "utf-8", "utf-8");
     }
 
-    private FileType determineFileTypeByFirstSymbol(char character) throws UnknownFileTypeException {
+    private FileType determineFileTypeByFirstSymbol(final char character) throws UnknownFileTypeException {
         switch (character) {
             case '<' -> {
                 return FileType.XML;
@@ -107,7 +107,7 @@ public class FabricConverter {
         }
     }
 
-    private FileType determineFileTypeByExtention(String sourcePath) throws UnknownFileTypeException {
+    private FileType determineFileTypeByExtention(final String sourcePath) throws UnknownFileTypeException {
         if (sourcePath.endsWith(".xml")) {
             return FileType.XML;
         } else if (sourcePath.endsWith(".json")) {
