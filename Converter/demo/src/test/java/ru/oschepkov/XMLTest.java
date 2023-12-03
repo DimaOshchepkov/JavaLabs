@@ -1,5 +1,6 @@
 package ru.oschepkov;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -58,5 +59,19 @@ public class XMLTest {
         XML xml = new XML("windows-1251");
         xml.write("src\\test\\resources\\out\\bookstoreWindows_1251.xml", bookstore);
         assertTrue((new File("src\\test\\resources\\out\\bookstoreWindows_1251.xml")).exists());
+    }
+
+    @Test
+    public void testRussianReadUtf_16() throws ReadFileException {
+        XML xml = new XML("utf-16");
+        BookstoreXml bookstore = xml.read("src\\test\\resources\\input\\bookstoreUtf_16.xml");
+        assertEquals(bookstore.getBooks().get(0).getCategory(), "Fantasy");
+    }
+
+    @Test
+    public void testRussianReadWindows_1251() throws ReadFileException {
+        XML xml = new XML("windows-1251");
+        BookstoreXml bookstore = xml.read("src\\test\\resources\\input\\bookstoreWindows_1251.xml");
+        assertEquals(bookstore.getBooks().get(0).getCategory(), "Роман");
     }
 }
