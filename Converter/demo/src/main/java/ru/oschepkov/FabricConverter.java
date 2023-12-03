@@ -31,7 +31,8 @@ public class FabricConverter {
      * @throws ReadFileException
      * @throws UnknownFileTypeException
      */
-    public Converter create(String sourcePath) throws ReadFileException, UnknownFileTypeException {
+    public Converter create(String sourcePath, String sourceEncoding, String targetEncoding) 
+            throws ReadFileException, UnknownFileTypeException {
         IReader reader;
         IWriter writer;
         try (FileReader r = new FileReader(sourcePath)) {
@@ -39,11 +40,11 @@ public class FabricConverter {
             if (character == -1) {
                 log.warn("Файл пуст");
                 if (sourcePath.endsWith(".xml")) {
-                    reader = new XML();
-                    writer = new JSON();
+                    reader = new XML(sourceEncoding);
+                    writer = new JSON(targetEncoding);
                 } else if (sourcePath.endsWith(".json")) {
-                    reader = new JSON();
-                    writer = new XML();
+                    reader = new JSON(sourceEncoding);
+                    writer = new XML(targetEncoding);
                 } else {
                     log.error("Неизвестный тип файла");
                     throw new UnknownFileTypeException("Неизвестный тип файла");
@@ -51,12 +52,12 @@ public class FabricConverter {
             } else {
                 switch ((char) character) {
                     case '<' -> {
-                        reader = new XML();
-                        writer = new JSON();
+                        reader = new XML(sourceEncoding);
+                        writer = new JSON(targetEncoding);
                     }
                     case '{' -> {
-                        reader = new JSON();
-                        writer = new XML();
+                        reader = new JSON(sourceEncoding);
+                        writer = new XML(targetEncoding);
                     }
                     default -> {
                         log.error("Неизвестный тип файла");
@@ -74,6 +75,9 @@ public class FabricConverter {
             throw new ReadFileException("Не удалось считать файл", exception);
             
         }
-
+    }
+    public Converter create(String sourcePath) 
+            throws ReadFileException, UnknownFileTypeException {
+        return create(sourcePath, "utf-8", "utf-8");
     }
 }
