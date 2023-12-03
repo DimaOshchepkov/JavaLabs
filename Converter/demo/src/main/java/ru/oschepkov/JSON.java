@@ -1,7 +1,14 @@
 package ru.oschepkov;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -15,9 +22,15 @@ import ru.oschepkov.years.YearsJson;
 public class JSON implements IWriter, IReader {
 
     ObjectMapper jsonMapper = new ObjectMapper();
-    ObjectWriter writer;
+    ObjectWriter writerObj;
+    String encoding;
     JSON() {
-        writer = jsonMapper.writerWithDefaultPrettyPrinter();
+        this("utf-8");
+    }
+
+    JSON(String encoding) {
+        writerObj = jsonMapper.writerWithDefaultPrettyPrinter();
+        this.encoding = encoding;
     }
     
     /** 
@@ -27,8 +40,13 @@ public class JSON implements IWriter, IReader {
      */
     @Override
     public void write(String path, Object obj) throws WriteFileException{  
-        try{ 
-            writer.writeValue(new File(path), obj);
+        try (OutputStream outputStream = new FileOutputStream(new File(path))){ 
+            OutputStreamWriter writer = new OutputStreamWriter(outputStream, encoding);
+            writerObj.writeValue(writer, obj);
+        }
+        catch (UnsupportedEncodingException exception) {
+            log.error(exception.getMessage(), exception);
+            throw new WriteFileException("Данная кодировка не поддерживается", exception);
         }
         catch (IOException exception) {
             log.error(exception.getMessage(), exception);
@@ -43,8 +61,13 @@ public class JSON implements IWriter, IReader {
      */
     @Override
     public YearsJson read(String path) throws ReadFileException {
-        try {
-        return jsonMapper.readValue(new File(path), YearsJson.class);
+        try (InputStream inputStream = new FileInputStream(new File(path))){
+            InputStreamReader reader = new InputStreamReader(inputStream, encoding);
+            return jsonMapper.readValue(reader, YearsJson.class);
+        }
+        catch (UnsupportedEncodingException exception) {
+            log.error(exception.getMessage(), exception);
+            throw new ReadFileException("Данная кодировка не поддерживается", exception);
         }
         catch (IOException exception) {
             log.error(exception.getMessage(), exception);
