@@ -1,5 +1,6 @@
 package ru.oschepkov;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -31,8 +32,8 @@ public class JSONTest {
     public void testWriteRussian() throws WriteFileException {
         YearsJson years = yearsInstance.getRussianBooksByYears();
         JSON json = new JSON();
-        json.write("src\\test\\resources\\out\\bookstore.xml", years);
-        assertTrue((new File("src\\test\\resources\\out\\bookstore.xml")).exists());
+        json.write("src\\test\\resources\\out\\bookstore.json", years);
+        assertTrue((new File("src\\test\\resources\\out\\bookstore.json")).exists());
     }
 
     @Test
@@ -41,5 +42,35 @@ public class JSONTest {
         JSON json = new JSON();
         json.write("src\\test\\resources\\out\\years.json", years);
         assertTrue((new File("src\\test\\resources\\out\\years.json")).exists());
+    }
+
+    @Test
+    public void testWriteRussianUtf_16() throws WriteFileException {
+        YearsJson years = yearsInstance.getRussianBooksByYears();
+        JSON json = new JSON("utf-16");
+        json.write("src\\test\\resources\\out\\booksByYearsUtf_16.json", years);
+        assertTrue((new File("src\\test\\resources\\out\\booksByYearsUtf_16.json")).exists());
+    }
+
+    @Test
+    public void testWriteRussianWindow_1251() throws WriteFileException {
+        YearsJson years = yearsInstance.getRussianBooksByYears();
+        JSON json = new JSON("windows-1251");
+        json.write("src\\test\\resources\\out\\booksByYearsWindows_1251.json", years);
+        assertTrue((new File("src\\test\\resources\\out\\booksByYearsWindows_1251.json")).exists());
+    }
+
+    @Test
+    public void testRussianReadWindows_1251() throws ReadFileException {
+        JSON json = new JSON("windows-1251");
+        YearsJson years= json.read("src\\test\\resources\\input\\booksByYearsWindows_1251.json");
+        assertEquals(years.getYears().get(0).getBooks().get(0).getCategory(), "Фантастика");
+    }
+
+    @Test
+    public void testRussianReadUtf_16() throws ReadFileException {
+        JSON json = new JSON("utf-16");
+        YearsJson years= json.read("src\\test\\resources\\input\\booksByYearsUtf_16.json");
+        assertEquals(years.getYears().get(0).getBooks().get(0).getCategory(), "Фантастика");
     }
 }
