@@ -6,10 +6,12 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.oschepkov.converterexeption.ReadFileException;
 import ru.oschepkov.converterexeption.WriteFileException;
 import ru.oschepkov.years.YearsJson;
 
+@Slf4j
 public class JSON implements IWriter, IReader {
 
     ObjectMapper jsonMapper = new ObjectMapper();
@@ -29,6 +31,7 @@ public class JSON implements IWriter, IReader {
             writer.writeValue(new File(path), obj);
         }
         catch (IOException exception) {
+            log.error(exception.getMessage(), exception);
             throw new WriteFileException("Ошибка записи в файл", exception);
         }
     }
@@ -44,6 +47,7 @@ public class JSON implements IWriter, IReader {
         return jsonMapper.readValue(new File(path), YearsJson.class);
         }
         catch (IOException exception) {
+            log.error(exception.getMessage(), exception);
             throw new ReadFileException("Ошибка записи в файл", exception);
         }
     }

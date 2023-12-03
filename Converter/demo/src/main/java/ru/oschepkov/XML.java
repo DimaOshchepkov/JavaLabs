@@ -6,10 +6,12 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.oschepkov.bookstore.BookstoreXml;
 import ru.oschepkov.converterexeption.ReadFileException;
 import ru.oschepkov.converterexeption.WriteFileException;
 
+@Slf4j
 public class XML implements IReader, IWriter {
 
     XmlMapper xmlMapper = new XmlMapper();
@@ -28,6 +30,7 @@ public class XML implements IReader, IWriter {
             xmlMapper.writeValue(new File(path), obj);
         }
         catch (IOException exception) {
+            log.error(exception.getMessage(), exception);
             throw new WriteFileException("Ошибка записи в файл", exception);
         }
     }
@@ -43,6 +46,7 @@ public class XML implements IReader, IWriter {
             return xmlMapper.readValue(new File(path), BookstoreXml.class);
         }
         catch(IOException exception) {
+            log.error(exception.getMessage(), exception);
             throw new ReadFileException("Ошибка чтения файла", exception);
         }
     }
