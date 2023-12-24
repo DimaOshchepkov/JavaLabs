@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aaaa.HelloController">
+    <SplitPane fx:id="pane" dividerPositions="0.25077399380804954" prefHeight="379.0" prefWidth="648.0">
+        <AnchorPane fx:id="leftPane" minHeight="80.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <VBox alignment="TOP_CENTER" prefHeight="377.0" prefWidth="106.0" style="-fx-padding: 20 0 0 0;" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0" VBox.vgrow="ALWAYS">
+
+                <Button fx:id="btn1" alignment="CENTER" maxWidth="Infinity" mnemonicParsing="false" onMouseClicked="#onMouseClicked" text="Button" HBox.hgrow="ALWAYS" />
+                <Button alignment="CENTER" maxWidth="Infinity" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS" />
+                <Button alignment="CENTER" maxWidth="Infinity" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS" />
+            </VBox>
+        </AnchorPane>
+        <AnchorPane fx:id="rightPane" maxWidth="640" minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="512.0">
+            <ImageView preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Image url="@font.png" />
+            </ImageView>
+        </AnchorPane>
+    </SplitPane>
+</StackPane>
