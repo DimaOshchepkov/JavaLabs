@@ -1,18 +1,12 @@
 package com.example;
+public class ChangeCase implements Sentenceable{
+    public String change(String input){
+        StringBuffer str = new StringBuffer(input);
+        for (int i = 0;i < str.length(); i++){
+            if (Character.isUpperCase(str.charAt(i))) str.replace(i,i+1,str.substring(i,i+1).toLowerCase());
+            else if (Character.isLowerCase(str.charAt(i))) str.replace(i,i+1, str.substring(i,i+1).toUpperCase());
 
-public class ChangeCase implements IFormatStrategy{
-
-    @Override
-    public String format(String str) {
-       StringBuilder sb = new StringBuilder(str);
-
-       for (int i = 0; i < str.length(); i++) {
-            if (Character.isLowerCase(sb.charAt(i)))
-                sb.setCharAt(i, Character.toUpperCase(sb.charAt(i)));
-            else
-                sb.setCharAt(i, Character.toLowerCase(sb.charAt(i)));
-       }
-       return sb.toString();
+        }
+        return str.toString();
     }
-    
 }
